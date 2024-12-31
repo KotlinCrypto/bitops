@@ -1,0 +1,75 @@
+public abstract class org/kotlincrypto/bitops/bits/Counter {
+	public abstract fun copy ()Lorg/kotlincrypto/bitops/bits/Counter;
+	public final fun equals (Ljava/lang/Object;)Z
+	public abstract fun final (I)Lorg/kotlincrypto/bitops/bits/Counter$Final;
+	public final fun hashCode ()I
+	public abstract fun increment ()V
+	public abstract fun reset ()V
+	public final fun toString ()Ljava/lang/String;
+}
+
+public final class org/kotlincrypto/bitops/bits/Counter$Bit32 : org/kotlincrypto/bitops/bits/Counter {
+	public static final field Companion Lorg/kotlincrypto/bitops/bits/Counter$Bit32$Companion;
+	public static final field MAX_INCREMENT I
+	public final field incrementBy I
+	public fun <init> (I)V
+	public fun <init> (III)V
+	public fun copy ()Lorg/kotlincrypto/bitops/bits/Counter$Bit32;
+	public synthetic fun copy ()Lorg/kotlincrypto/bitops/bits/Counter;
+	public fun final (I)Lorg/kotlincrypto/bitops/bits/Counter$Bit32$Final;
+	public synthetic fun final (I)Lorg/kotlincrypto/bitops/bits/Counter$Final;
+	public final fun hi ()I
+	public fun increment ()V
+	public final fun lo ()I
+	public fun reset ()V
+}
+
+public final class org/kotlincrypto/bitops/bits/Counter$Bit32$Companion {
+}
+
+public final class org/kotlincrypto/bitops/bits/Counter$Bit32$Final : org/kotlincrypto/bitops/bits/Counter$Final {
+	public final field hi I
+	public final field lo I
+	public fun asBits ()Lorg/kotlincrypto/bitops/bits/Counter$Bit32$Final;
+	public synthetic fun asBits ()Lorg/kotlincrypto/bitops/bits/Counter$Final;
+	public final fun component1 ()I
+	public final fun component2 ()I
+}
+
+public final class org/kotlincrypto/bitops/bits/Counter$Bit64 : org/kotlincrypto/bitops/bits/Counter {
+	public static final field Companion Lorg/kotlincrypto/bitops/bits/Counter$Bit64$Companion;
+	public static final field MAX_INCREMENT J
+	public final field incrementBy J
+	public fun <init> (J)V
+	public fun <init> (JJJ)V
+	public fun copy ()Lorg/kotlincrypto/bitops/bits/Counter$Bit64;
+	public synthetic fun copy ()Lorg/kotlincrypto/bitops/bits/Counter;
+	public fun final (I)Lorg/kotlincrypto/bitops/bits/Counter$Bit64$Final;
+	public synthetic fun final (I)Lorg/kotlincrypto/bitops/bits/Counter$Final;
+	public final fun hi ()J
+	public fun increment ()V
+	public final fun lo ()J
+	public fun reset ()V
+}
+
+public final class org/kotlincrypto/bitops/bits/Counter$Bit64$Companion {
+}
+
+public final class org/kotlincrypto/bitops/bits/Counter$Bit64$Final : org/kotlincrypto/bitops/bits/Counter$Final {
+	public final field hi J
+	public final field lo J
+	public fun asBits ()Lorg/kotlincrypto/bitops/bits/Counter$Bit64$Final;
+	public synthetic fun asBits ()Lorg/kotlincrypto/bitops/bits/Counter$Final;
+	public final fun component1 ()J
+	public final fun component2 ()J
+}
+
+public abstract class org/kotlincrypto/bitops/bits/Counter$Final {
+	public final field isBits Z
+	public synthetic fun <init> (ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public abstract fun asBits ()Lorg/kotlincrypto/bitops/bits/Counter$Final;
+	public final fun equals (Ljava/lang/Object;)Z
+	public final fun hashCode ()I
+	public final fun toString ()Ljava/lang/String;
+}
+

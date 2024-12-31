@@ -1,0 +1,106 @@
+public abstract class org/kotlincrypto/bitops/endian/Endian {
+	public abstract fun intFrom ([BI)I
+	public abstract fun intOf (BBBB)I
+	public abstract fun longFrom ([BI)J
+	public abstract fun longOf (BBBBBBBB)J
+	public final fun pack (I[BI)[B
+	public final fun pack (I[BIII)[B
+	public final fun pack (J[BI)[B
+	public final fun pack (J[BIII)[B
+	public final fun pack (S[BI)[B
+	public final fun pack (S[BIII)[B
+	public static synthetic fun pack$default (Lorg/kotlincrypto/bitops/endian/Endian;I[BIIIILjava/lang/Object;)[B
+	public static synthetic fun pack$default (Lorg/kotlincrypto/bitops/endian/Endian;J[BIIIILjava/lang/Object;)[B
+	public static synthetic fun pack$default (Lorg/kotlincrypto/bitops/endian/Endian;S[BIIIILjava/lang/Object;)[B
+	public abstract fun packUnsafe (I[BI)[B
+	public abstract fun packUnsafe (I[BIII)[B
+	public abstract fun packUnsafe (J[BI)[B
+	public abstract fun packUnsafe (J[BIII)[B
+	public abstract fun packUnsafe (S[BI)[B
+	public abstract fun packUnsafe (S[BIII)[B
+	public static synthetic fun packUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian;I[BIIIILjava/lang/Object;)[B
+	public static synthetic fun packUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian;J[BIIIILjava/lang/Object;)[B
+	public static synthetic fun packUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian;S[BIIIILjava/lang/Object;)[B
+	public abstract fun shortFrom ([BI)S
+	public abstract fun shortOf (BB)S
+	public final fun toString ()Ljava/lang/String;
+}
+
+public final class org/kotlincrypto/bitops/endian/Endian$Big : org/kotlincrypto/bitops/endian/Endian {
+	public static final field INSTANCE Lorg/kotlincrypto/bitops/endian/Endian$Big;
+	public static final fun beIntAt ([BI)I
+	public static final fun beLongAt ([BI)J
+	public static final fun bePack ([BII)[B
+	public static final fun bePack ([BIIII)[B
+	public static final fun bePack ([BJI)[B
+	public static final fun bePack ([BJIII)[B
+	public static final fun bePack ([BSI)[B
+	public static final fun bePack ([BSIII)[B
+	public static synthetic fun bePack$default ([BIIIIILjava/lang/Object;)[B
+	public static synthetic fun bePack$default ([BJIIIILjava/lang/Object;)[B
+	public static synthetic fun bePack$default ([BSIIIILjava/lang/Object;)[B
+	public static final fun bePackUnsafe ([BII)[B
+	public static final fun bePackUnsafe ([BIIII)[B
+	public static final fun bePackUnsafe ([BJI)[B
+	public static final fun bePackUnsafe ([BJIII)[B
+	public static final fun bePackUnsafe ([BSI)[B
+	public static final fun bePackUnsafe ([BSIII)[B
+	public static synthetic fun bePackUnsafe$default ([BIIIIILjava/lang/Object;)[B
+	public static synthetic fun bePackUnsafe$default ([BJIIIILjava/lang/Object;)[B
+	public static synthetic fun bePackUnsafe$default ([BSIIIILjava/lang/Object;)[B
+	public static final fun beShortAt ([BI)S
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun intFrom ([BI)I
+	public fun intOf (BBBB)I
+	public fun longFrom ([BI)J
+	public fun longOf (BBBBBBBB)J
+	public fun packUnsafe (I[BI)[B
+	public fun packUnsafe (I[BIII)[B
+	public fun packUnsafe (J[BI)[B
+	public fun packUnsafe (J[BIII)[B
+	public fun packUnsafe (S[BI)[B
+	public fun packUnsafe (S[BIII)[B
+	public fun shortFrom ([BI)S
+	public fun shortOf (BB)S
+}
+
+public final class org/kotlincrypto/bitops/endian/Endian$Little : org/kotlincrypto/bitops/endian/Endian {
+	public static final field INSTANCE Lorg/kotlincrypto/bitops/endian/Endian$Little;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun intFrom ([BI)I
+	public fun intOf (BBBB)I
+	public static final fun leIntAt ([BI)I
+	public static final fun leLongAt ([BI)J
+	public static final fun lePack ([BII)[B
+	public static final fun lePack ([BIIII)[B
+	public static final fun lePack ([BJI)[B
+	public static final fun lePack ([BJIII)[B
+	public static final fun lePack ([BSI)[B
+	public static final fun lePack ([BSIII)[B
+	public static synthetic fun lePack$default ([BIIIIILjava/lang/Object;)[B
+	public static synthetic fun lePack$default ([BJIIIILjava/lang/Object;)[B
+	public static synthetic fun lePack$default ([BSIIIILjava/lang/Object;)[B
+	public static final fun lePackUnsafe ([BII)[B
+	public static final fun lePackUnsafe ([BIIII)[B
+	public static final fun lePackUnsafe ([BJI)[B
+	public static final fun lePackUnsafe ([BJIII)[B
+	public static final fun lePackUnsafe ([BSI)[B
+	public static final fun lePackUnsafe ([BSIII)[B
+	public static synthetic fun lePackUnsafe$default ([BIIIIILjava/lang/Object;)[B
+	public static synthetic fun lePackUnsafe$default ([BJIIIILjava/lang/Object;)[B
+	public static synthetic fun lePackUnsafe$default ([BSIIIILjava/lang/Object;)[B
+	public static final fun leShortAt ([BI)S
+	public fun longFrom ([BI)J
+	public fun longOf (BBBBBBBB)J
+	public fun packUnsafe (I[BI)[B
+	public fun packUnsafe (I[BIII)[B
+	public fun packUnsafe (J[BI)[B
+	public fun packUnsafe (J[BIII)[B
+	public fun packUnsafe (S[BI)[B
+	public fun packUnsafe (S[BIII)[B
+	public fun shortFrom ([BI)S
+	public fun shortOf (BB)S
+}
+
