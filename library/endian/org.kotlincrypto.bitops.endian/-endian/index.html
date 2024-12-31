@@ -1,0 +1,239 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Endian</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../../index.html">
+                            bitops
+                    </a>            </div>
+            <div class="library-version">0.1.0-SNAPSHOT
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":library:endian:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="endian::org.kotlincrypto.bitops.endian/Endian///PointingToDeclaration//-1434307559">
+  <div class="breadcrumbs"><a href="../../index.html">endian</a><span class="delimiter">/</span><a href="../index.html">org.kotlincrypto.bitops.endian</a><span class="delimiter">/</span><span class="current">Endian</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Endian</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="index.html">Endian</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/KotlinCrypto/bitops/tree/master/library/endian/src/commonMain/kotlin/org/kotlincrypto/bitops/endian/Endian.kt#L26">source</a>)</span></span></div><p class="paragraph"><a href="-big/index.html">Big</a>&amp;<a href="-little/index.html">Little</a> endian utilities.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-big/index.html">Big</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-little/index.html">Little</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-2034113641%2FClasslikes%2F-1434307559" anchor-label="Big" id="-2034113641%2FClasslikes%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-big/index.html"><span><span>Big</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2034113641%2FClasslikes%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-big/index.html">Big</a> : <a href="index.html">Endian</a></div><div class="brief "><p class="paragraph">Implementation of the <a href="index.html">Endian</a> abstraction which performs all operations using big-endian byte order.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1271441365%2FClasslikes%2F-1434307559" anchor-label="Little" id="1271441365%2FClasslikes%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-little/index.html"><span><span>Little</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1271441365%2FClasslikes%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-little/index.html">Little</a> : <a href="index.html">Endian</a></div><div class="brief "><p class="paragraph">Implementation of the <a href="index.html">Endian</a> abstraction which performs all operations using little-endian byte order.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-209093642%2FFunctions%2F-1434307559" anchor-label="intFrom" id="-209093642%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="int-from.html"><span>int</span><wbr><span><span>From</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-209093642%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="int-from.html"><span class="token function">intFrom</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">source<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">offset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">Convert 4 bytes from <a href="int-from.html">source</a>, starting at index <a href="int-from.html">offset</a>, to an Int.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1197737351%2FFunctions%2F-1434307559" anchor-label="intOf" id="-1197737351%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="int-of.html"><span>int</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1197737351%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="int-of.html"><span class="token function">intOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">b0<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b1<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b2<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b3<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">Convert 4 bytes to an Int.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1438175729%2FFunctions%2F-1434307559" anchor-label="longFrom" id="1438175729%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="long-from.html"><span>long</span><wbr><span><span>From</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1438175729%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="long-from.html"><span class="token function">longFrom</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">source<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">offset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span></div><div class="brief "><p class="paragraph">Convert 8 bytes from <a href="long-from.html">source</a>, starting at index <a href="long-from.html">offset</a>, to a Long.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1802178836%2FFunctions%2F-1434307559" anchor-label="longOf" id="-1802178836%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="long-of.html"><span>long</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1802178836%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="long-of.html"><span class="token function">longOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">b0<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b1<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b2<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b3<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b4<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b5<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b6<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b7<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span></div><div class="brief "><p class="paragraph">Convert 8 bytes to a Long.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1972075760%2FFunctions%2F-1434307559" anchor-label="pack" id="1972075760%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pack.html"><span><span>pack</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1972075760%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="pack.html"><span class="token function">pack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs all 4 bytes of <a href="pack.html">target</a> Int into <a href="pack.html">dest</a>, starting at index <a href="pack.html">destOffset</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="pack.html"><span class="token function">pack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs all 8 bytes of <a href="pack.html">target</a> Long into <a href="pack.html">dest</a>, starting at index <a href="pack.html">destOffset</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="pack.html"><span class="token function">pack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs all 2 bytes of <a href="pack.html">target</a> Short into <a href="pack.html">dest</a>, starting at index <a href="pack.html">destOffset</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="pack.html"><span class="token function">pack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">startIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">endIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator"> = </span>Int.SIZE_BYTES</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs bytes of <a href="pack.html">target</a> Int from <a href="pack.html">startIndex</a> (inclusive) to <a href="pack.html">endIndex</a> (exclusive) into <a href="pack.html">dest</a>, starting at <a href="pack.html">destOffset</a>. If <a href="pack.html">startIndex</a> is 0 and <a href="pack.html">endIndex</a> is <span data-unresolved-link="kotlin/Int.Companion/SIZE_BYTES/#/PointingToDeclaration/">Int.SIZE_BYTES</span>, the more performant <a href="pack.html">pack</a> function will be utilized.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="pack.html"><span class="token function">pack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">startIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">endIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator"> = </span>Long.SIZE_BYTES</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs bytes of <a href="pack.html">target</a> Long from <a href="pack.html">startIndex</a> (inclusive) to <a href="pack.html">endIndex</a> (exclusive) into <a href="pack.html">dest</a>, starting at <a href="pack.html">destOffset</a>. If <a href="pack.html">startIndex</a> is 0 and <a href="pack.html">endIndex</a> is <span data-unresolved-link="kotlin/Long.Companion/SIZE_BYTES/#/PointingToDeclaration/">Long.SIZE_BYTES</span>, the more performant <a href="pack.html">pack</a> function will be utilized.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="pack.html"><span class="token function">pack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">startIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">endIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator"> = </span>Short.SIZE_BYTES</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs bytes of <a href="pack.html">target</a> Short from <a href="pack.html">startIndex</a> (inclusive) to <a href="pack.html">endIndex</a> (exclusive) into <a href="pack.html">dest</a>, starting at <a href="pack.html">destOffset</a>. If <a href="pack.html">startIndex</a> is 0 and <a href="pack.html">endIndex</a> is <span data-unresolved-link="kotlin/Short.Companion/SIZE_BYTES/#/PointingToDeclaration/">Short.SIZE_BYTES</span>, the more performant <a href="pack.html">pack</a> function will be utilized.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-650967876%2FFunctions%2F-1434307559" anchor-label="packUnsafe" id="-650967876%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pack-unsafe.html"><span>pack</span><wbr><span><span>Unsafe</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-650967876%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="pack-unsafe.html"><span class="token function">packUnsafe</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs all 4 bytes of <a href="pack-unsafe.html">target</a> Int into <a href="pack-unsafe.html">dest</a>, starting at index <a href="pack-unsafe.html">destOffset</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="pack-unsafe.html"><span class="token function">packUnsafe</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs all 8 bytes of <a href="pack-unsafe.html">target</a> Long into <a href="pack-unsafe.html">dest</a>, starting at index <a href="pack-unsafe.html">destOffset</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="pack-unsafe.html"><span class="token function">packUnsafe</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs all 2 bytes of <a href="pack-unsafe.html">target</a> Short into <a href="pack-unsafe.html">dest</a>, starting at index <a href="pack-unsafe.html">destOffset</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="pack-unsafe.html"><span class="token function">packUnsafe</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">startIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">endIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator"> = </span>Int.SIZE_BYTES</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs bytes of <a href="pack-unsafe.html">target</a> Int from <a href="pack-unsafe.html">startIndex</a> (inclusive) to <a href="pack-unsafe.html">endIndex</a> (exclusive) into <a href="pack-unsafe.html">dest</a>, starting at <a href="pack-unsafe.html">destOffset</a>. If <a href="pack-unsafe.html">startIndex</a> is 0 and <a href="pack-unsafe.html">endIndex</a> is <span data-unresolved-link="kotlin/Int.Companion/SIZE_BYTES/#/PointingToDeclaration/">Int.SIZE_BYTES</span>, the more performant <a href="pack.html">pack</a> function will be utilized.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="pack-unsafe.html"><span class="token function">packUnsafe</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">startIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">endIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator"> = </span>Long.SIZE_BYTES</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs bytes of <a href="pack-unsafe.html">target</a> Long from <a href="pack-unsafe.html">startIndex</a> (inclusive) to <a href="pack-unsafe.html">endIndex</a> (exclusive) into <a href="pack-unsafe.html">dest</a>, starting at <a href="pack-unsafe.html">destOffset</a>. If <a href="pack-unsafe.html">startIndex</a> is 0 and <a href="pack-unsafe.html">endIndex</a> is <span data-unresolved-link="kotlin/Long.Companion/SIZE_BYTES/#/PointingToDeclaration/">Long.SIZE_BYTES</span>, the more performant <a href="pack.html">pack</a> function will be utilized.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="pack-unsafe.html"><span class="token function">packUnsafe</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span><span class="token punctuation">, </span></span><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">destOffset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">startIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">endIndex<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator"> = </span>Short.SIZE_BYTES</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">Packs bytes of <a href="pack-unsafe.html">target</a> Short from <a href="pack-unsafe.html">startIndex</a> (inclusive) to <a href="pack-unsafe.html">endIndex</a> (exclusive) into <a href="pack-unsafe.html">dest</a>, starting at <a href="pack-unsafe.html">destOffset</a>. If <a href="pack-unsafe.html">startIndex</a> is 0 and <a href="pack-unsafe.html">endIndex</a> is <span data-unresolved-link="kotlin/Short.Companion/SIZE_BYTES/#/PointingToDeclaration/">Short.SIZE_BYTES</span>, the more performant <a href="pack.html">pack</a> function will be utilized.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1523100483%2FFunctions%2F-1434307559" anchor-label="shortFrom" id="1523100483%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="short-from.html"><span>short</span><wbr><span><span>From</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1523100483%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="short-from.html"><span class="token function">shortFrom</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">source<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token punctuation">, </span></span><span class="parameter ">offset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span></div><div class="brief "><p class="paragraph">Convert 2 bytes from <a href="short-from.html">source</a>, starting at index <a href="short-from.html">offset</a>, to a Short.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1286863638%2FFunctions%2F-1434307559" anchor-label="shortOf" id="-1286863638%2FFunctions%2F-1434307559" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="short-of.html"><span>short</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1286863638%2FFunctions%2F-1434307559"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="short-of.html"><span class="token function">shortOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">b0<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b1<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span></div><div class="brief "><p class="paragraph">Convert 2 bytes to a Short.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

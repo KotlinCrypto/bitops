@@ -1,0 +1,7 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:library/bits
+org.kotlincrypto.bitops.bits
+module:library/endian
+org.kotlincrypto.bitops.endian
