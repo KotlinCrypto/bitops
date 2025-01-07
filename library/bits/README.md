@@ -1,3 +1,3 @@
 # Module bits
 
-TODO
+Utilities for working with bits & bytes.
