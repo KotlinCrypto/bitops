@@ -54,6 +54,7 @@ kmpConfiguration {
             sourceSetMain {
                 dependencies {
                     implementation(libs.benchmark.runtime)
+                    implementation(project(":library:bits"))
                     implementation(project(":library:endian"))
                 }
             }

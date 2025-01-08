@@ -1,4 +1,5 @@
 public abstract class org/kotlincrypto/bitops/endian/Endian {
+	public static final field Companion Lorg/kotlincrypto/bitops/endian/Endian$Companion;
 	public abstract fun intFrom ([BI)I
 	public abstract fun intOf (BBBB)I
 	public abstract fun longFrom ([BI)J
@@ -65,6 +66,9 @@ public final class org/kotlincrypto/bitops/endian/Endian$Big : org/kotlincrypto/
 	public fun shortOf (BB)S
 }
 
+public final class org/kotlincrypto/bitops/endian/Endian$Companion {
+}
+
 public final class org/kotlincrypto/bitops/endian/Endian$Little : org/kotlincrypto/bitops/endian/Endian {
 	public static final field INSTANCE Lorg/kotlincrypto/bitops/endian/Endian$Little;
 	public fun equals (Ljava/lang/Object;)Z
@@ -102,5 +106,86 @@ public final class org/kotlincrypto/bitops/endian/Endian$Little : org/kotlincryp
 	public fun packUnsafe (S[BIII)[B
 	public fun shortFrom ([BI)S
 	public fun shortOf (BB)S
+}
+
+public abstract interface annotation class org/kotlincrypto/bitops/endian/InternalEndianApi : java/lang/annotation/Annotation {
+}
+
+public final class org/kotlincrypto/bitops/endian/_EndianInlineKt {
+	public static final fun beInlineIntFrom (Lorg/kotlincrypto/bitops/endian/Endian$Companion;[BI)I
+	public static final fun beInlineIntOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;BBBB)I
+	public static final fun beInlineLongFrom (Lorg/kotlincrypto/bitops/endian/Endian$Companion;[BI)J
+	public static final fun beInlineLongOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;BBBBBBBB)J
+	public static final fun beInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;I[BI)[B
+	public static final fun beInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;I[BIII)[B
+	public static final fun beInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;J[BI)[B
+	public static final fun beInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;J[BIII)[B
+	public static final fun beInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;S[BI)[B
+	public static final fun beInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;S[BIII)[B
+	public static synthetic fun beInlinePackUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian$Companion;I[BIIIILjava/lang/Object;)[B
+	public static synthetic fun beInlinePackUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian$Companion;J[BIIIILjava/lang/Object;)[B
+	public static synthetic fun beInlinePackUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian$Companion;S[BIIIILjava/lang/Object;)[B
+	public static final fun beInlineShortFrom (Lorg/kotlincrypto/bitops/endian/Endian$Companion;[BI)S
+	public static final fun beInlineShortOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;BB)S
+	public static final fun leInlineIntFrom (Lorg/kotlincrypto/bitops/endian/Endian$Companion;[BI)I
+	public static final fun leInlineIntOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;BBBB)I
+	public static final fun leInlineLongFrom (Lorg/kotlincrypto/bitops/endian/Endian$Companion;[BI)J
+	public static final fun leInlineLongOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;BBBBBBBB)J
+	public static final fun leInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;I[BI)[B
+	public static final fun leInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;I[BIII)[B
+	public static final fun leInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;J[BI)[B
+	public static final fun leInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;J[BIII)[B
+	public static final fun leInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;S[BI)[B
+	public static final fun leInlinePackUnsafe (Lorg/kotlincrypto/bitops/endian/Endian$Companion;S[BIII)[B
+	public static synthetic fun leInlinePackUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian$Companion;I[BIIIILjava/lang/Object;)[B
+	public static synthetic fun leInlinePackUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian$Companion;J[BIIIILjava/lang/Object;)[B
+	public static synthetic fun leInlinePackUnsafe$default (Lorg/kotlincrypto/bitops/endian/Endian$Companion;S[BIIIILjava/lang/Object;)[B
+	public static final fun leInlineShortFrom (Lorg/kotlincrypto/bitops/endian/Endian$Companion;[BI)S
+	public static final fun leInlineShortOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;BB)S
+	public static final fun longOf (Lorg/kotlincrypto/bitops/endian/Endian$Companion;II)J
+}
+
+public final class org/kotlincrypto/bitops/endian/internal/B0 {
+	public static final synthetic fun box-impl (B)Lorg/kotlincrypto/bitops/endian/internal/B0;
+	public static fun constructor-impl (B)B
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (BLjava/lang/Object;)Z
+	public static final fun equals-impl0 (BB)Z
+	public fun hashCode ()I
+	public static fun hashCode-impl (B)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (B)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()B
+}
+
+public final class org/kotlincrypto/bitops/endian/internal/Lo {
+	public static final synthetic fun box-impl (I)Lorg/kotlincrypto/bitops/endian/internal/Lo;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final class org/kotlincrypto/bitops/endian/internal/_EndianUtilsKt {
+	public static final fun packAllElsePartial ([BIIIILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)[B
+	public static final fun packBEInt ([BII)[B
+	public static final fun packBELong ([BJI)[B
+	public static final fun packBEShort ([BSI)[B
+	public static final fun packLEInt ([BII)[B
+	public static final fun packLELong ([BJI)[B
+	public static final fun packLEShort ([BSI)[B
+	public static final fun packPartial ([BIIILkotlin/jvm/functions/Function1;)[B
+	public static final fun toBEInt-_EY57KE (BBBB)I
+	public static final fun toBELong-23fJcIY (BBBBBBBB)J
+	public static final fun toBEShort-qNA_5i4 (BB)S
+	public static final fun toLEInt-_EY57KE (BBBB)I
+	public static final fun toLELong-23fJcIY (BBBBBBBB)J
+	public static final fun toLEShort-qNA_5i4 (BB)S
+	public static final fun toLong-DL1PAzY (II)J
 }
 
