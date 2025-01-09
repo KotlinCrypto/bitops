@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-@file:Suppress("KotlinRedundantDiagnosticSuppress", "NOTHING_TO_INLINE", "DEPRECATION_ERROR", "RemoveRedundantQualifierName")
-@file:OptIn(InternalEndianApi::class)
+@file:Suppress("KotlinRedundantDiagnosticSuppress", "NOTHING_TO_INLINE", "RemoveRedundantQualifierName")
 
 package org.kotlincrypto.bitops.endian
 
+import org.kotlincrypto.bitops.endian.internal.*
 import kotlin.jvm.JvmStatic
 
 /**
@@ -1041,14 +1041,14 @@ public sealed class Endian private constructor() {
         public override fun shortOf(
             b0: Byte,
             b1: Byte,
-        ): Short = beInlineShortOf(b0, b1)
+        ): Short = B0(b0).toBEShort(b1)
 
         public override fun intOf(
             b0: Byte,
             b1: Byte,
             b2: Byte,
             b3: Byte,
-        ): Int = beInlineIntOf(b0, b1, b2, b3)
+        ): Int = B0(b0).toBEInt(b1, b2, b3)
 
         public override fun longOf(
             b0: Byte,
@@ -1059,40 +1059,54 @@ public sealed class Endian private constructor() {
             b5: Byte,
             b6: Byte,
             b7: Byte,
-        ): Long = beInlineLongOf(b0, b1, b2, b3, b4, b5, b6, b7)
+        ): Long = B0(b0).toBELong(b1, b2, b3, b4, b5, b6, b7)
 
         public override fun shortFrom(
             source: ByteArray,
             offset: Int,
-        ): Short = beInlineShortFrom(source, offset)
+        ): Short = B0(source[offset]).toBEShort(
+            source[offset + 1],
+        )
 
         public override fun intFrom(
             source: ByteArray,
             offset: Int,
-        ): Int = beInlineIntFrom(source, offset)
+        ): Int = B0(source[offset]).toBEInt(
+            source[offset + 1],
+            source[offset + 2],
+            source[offset + 3],
+        )
 
         public override fun longFrom(
             source: ByteArray,
             offset: Int
-        ): Long = beInlineLongFrom(source, offset)
+        ): Long = B0(source[offset]).toBELong(
+            source[offset + 1],
+            source[offset + 2],
+            source[offset + 3],
+            source[offset + 4],
+            source[offset + 5],
+            source[offset + 6],
+            source[offset + 7],
+        )
 
         public override fun packUnsafe(
             target: Short,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = beInlinePackUnsafe(target, dest, destOffset)
+        ): ByteArray = dest.packBEShort(target, destOffset)
 
         public override fun packUnsafe(
             target: Int,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = beInlinePackUnsafe(target, dest, destOffset)
+        ): ByteArray = dest.packBEInt(target, destOffset)
 
         public override fun packUnsafe(
             target: Long,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = beInlinePackUnsafe(target, dest, destOffset)
+        ): ByteArray = dest.packBELong(target, destOffset)
 
         public override fun packUnsafe(
             target: Short,
@@ -1100,12 +1114,13 @@ public sealed class Endian private constructor() {
             destOffset: Int,
             startIndex: Int,
             endIndex: Int, // = Short.SIZE_BYTES
-        ): ByteArray = beInlinePackUnsafe(
-            target = target,
-            dest = dest,
-            destOffset = destOffset,
+        ): ByteArray = dest.packAllElsePartial(
+            offset = destOffset,
             startIndex = startIndex,
             endIndex = endIndex,
+            sizeBytes = Short.SIZE_BYTES,
+            packAll = { packBEShort(target, destOffset) },
+            ushr = { bits -> (target.toInt() ushr (8 - bits)).toByte() },
         )
 
         public override fun packUnsafe(
@@ -1114,12 +1129,13 @@ public sealed class Endian private constructor() {
             destOffset: Int,
             startIndex: Int,
             endIndex: Int, // = Int.SIZE_BYTES
-        ): ByteArray = beInlinePackUnsafe(
-            target = target,
-            dest = dest,
-            destOffset = destOffset,
+        ): ByteArray = dest.packAllElsePartial(
+            offset = destOffset,
             startIndex = startIndex,
             endIndex = endIndex,
+            sizeBytes = Int.SIZE_BYTES,
+            packAll = { packBEInt(target, destOffset) },
+            ushr = { bits -> (target ushr (24 - bits)).toByte() },
         )
 
         public override fun packUnsafe(
@@ -1128,12 +1144,13 @@ public sealed class Endian private constructor() {
             destOffset: Int,
             startIndex: Int,
             endIndex: Int, // = Long.SIZE_BYTES
-        ): ByteArray = beInlinePackUnsafe(
-            target = target,
-            dest = dest,
-            destOffset = destOffset,
+        ): ByteArray = dest.packAllElsePartial(
+            offset = destOffset,
             startIndex = startIndex,
             endIndex = endIndex,
+            sizeBytes = Long.SIZE_BYTES,
+            packAll = { packBELong(target, destOffset) },
+            ushr = { bits -> (target ushr (56 - bits)).toByte() },
         )
     }
 
@@ -1262,14 +1279,14 @@ public sealed class Endian private constructor() {
         public override fun shortOf(
             b0: Byte,
             b1: Byte,
-        ): Short = leInlineShortOf(b0, b1)
+        ): Short = B0(b0).toLEShort(b1)
 
         public override fun intOf(
             b0: Byte,
             b1: Byte,
             b2: Byte,
             b3: Byte,
-        ): Int = leInlineIntOf(b0, b1, b2, b3)
+        ): Int = B0(b0).toLEInt(b1, b2, b3)
 
         public override fun longOf(
             b0: Byte,
@@ -1280,40 +1297,54 @@ public sealed class Endian private constructor() {
             b5: Byte,
             b6: Byte,
             b7: Byte,
-        ): Long = leInlineLongOf(b0, b1, b2, b3, b4, b5, b6, b7)
+        ): Long = B0(b0).toLELong(b1, b2, b3, b4, b5, b6, b7)
 
         public override fun shortFrom(
             source: ByteArray,
             offset: Int,
-        ): Short = leInlineShortFrom(source, offset)
+        ): Short = B0(source[offset]).toLEShort(
+            source[offset + 1],
+        )
 
         public override fun intFrom(
             source: ByteArray,
             offset: Int,
-        ): Int = leInlineIntFrom(source, offset)
+        ): Int = B0(source[offset]).toLEInt(
+            source[offset + 1],
+            source[offset + 2],
+            source[offset + 3],
+        )
 
         public override fun longFrom(
             source: ByteArray,
             offset: Int
-        ): Long = leInlineLongFrom(source, offset)
+        ): Long = B0(source[offset]).toLELong(
+            source[offset + 1],
+            source[offset + 2],
+            source[offset + 3],
+            source[offset + 4],
+            source[offset + 5],
+            source[offset + 6],
+            source[offset + 7],
+        )
 
         public override fun packUnsafe(
             target: Short,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = leInlinePackUnsafe(target, dest, destOffset)
+        ): ByteArray = dest.packLEShort(target, destOffset)
 
         public override fun packUnsafe(
             target: Int,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = leInlinePackUnsafe(target, dest, destOffset)
+        ): ByteArray = dest.packLEInt(target, destOffset)
 
         public override fun packUnsafe(
             target: Long,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = leInlinePackUnsafe(target, dest, destOffset)
+        ): ByteArray = dest.packLELong(target, destOffset)
 
         public override fun packUnsafe(
             target: Short,
@@ -1321,12 +1352,13 @@ public sealed class Endian private constructor() {
             destOffset: Int,
             startIndex: Int,
             endIndex: Int, // = Short.SIZE_BYTES
-        ): ByteArray = leInlinePackUnsafe(
-            target = target,
-            dest = dest,
-            destOffset = destOffset,
+        ): ByteArray = dest.packAllElsePartial(
+            offset = destOffset,
             startIndex = startIndex,
             endIndex = endIndex,
+            sizeBytes = Short.SIZE_BYTES,
+            packAll = { packLEShort(target, destOffset) },
+            ushr = { bits -> (target.toInt() ushr bits).toByte() },
         )
 
         public override fun packUnsafe(
@@ -1335,12 +1367,13 @@ public sealed class Endian private constructor() {
             destOffset: Int,
             startIndex: Int,
             endIndex: Int, // = Int.SIZE_BYTES
-        ): ByteArray = leInlinePackUnsafe(
-            target = target,
-            dest = dest,
-            destOffset = destOffset,
+        ): ByteArray = dest.packAllElsePartial(
+            offset = destOffset,
             startIndex = startIndex,
             endIndex = endIndex,
+            sizeBytes = Int.SIZE_BYTES,
+            packAll = { packLEInt(target, destOffset) },
+            ushr = { bits -> (target ushr bits).toByte() },
         )
 
         public override fun packUnsafe(
@@ -1349,12 +1382,13 @@ public sealed class Endian private constructor() {
             destOffset: Int,
             startIndex: Int,
             endIndex: Int, // = Long.SIZE_BYTES
-        ): ByteArray = leInlinePackUnsafe(
-            target = target,
-            dest = dest,
-            destOffset = destOffset,
+        ): ByteArray = dest.packAllElsePartial(
+            offset = destOffset,
             startIndex = startIndex,
             endIndex = endIndex,
+            sizeBytes = Long.SIZE_BYTES,
+            packAll = { packLELong(target, destOffset) },
+            ushr = { bits -> (target ushr bits).toByte() },
         )
     }
 
@@ -1364,8 +1398,7 @@ public sealed class Endian private constructor() {
         is Little -> "Endian.Little"
     }
 
-    /** @suppress */
-    public companion object {
+    private companion object {
 
         @JvmStatic
         private fun checkPackParameters(
