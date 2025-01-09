@@ -6,32 +6,6 @@
 // - Show declarations: true
 
 // Library unique name: <org.kotlincrypto.bitops:endian>
-open annotation class org.kotlincrypto.bitops.endian/InternalEndianApi : kotlin/Annotation { // org.kotlincrypto.bitops.endian/InternalEndianApi|null[0]
-    constructor <init>() // org.kotlincrypto.bitops.endian/InternalEndianApi.<init>|<init>(){}[0]
-}
-
-final value class org.kotlincrypto.bitops.endian.internal/B0 { // org.kotlincrypto.bitops.endian.internal/B0|null[0]
-    constructor <init>(kotlin/Byte) // org.kotlincrypto.bitops.endian.internal/B0.<init>|<init>(kotlin.Byte){}[0]
-
-    final val b0 // org.kotlincrypto.bitops.endian.internal/B0.b0|{}b0[0]
-        final fun <get-b0>(): kotlin/Byte // org.kotlincrypto.bitops.endian.internal/B0.b0.<get-b0>|<get-b0>(){}[0]
-
-    final fun equals(kotlin/Any?): kotlin/Boolean // org.kotlincrypto.bitops.endian.internal/B0.equals|equals(kotlin.Any?){}[0]
-    final fun hashCode(): kotlin/Int // org.kotlincrypto.bitops.endian.internal/B0.hashCode|hashCode(){}[0]
-    final fun toString(): kotlin/String // org.kotlincrypto.bitops.endian.internal/B0.toString|toString(){}[0]
-}
-
-final value class org.kotlincrypto.bitops.endian.internal/Lo { // org.kotlincrypto.bitops.endian.internal/Lo|null[0]
-    constructor <init>(kotlin/Int) // org.kotlincrypto.bitops.endian.internal/Lo.<init>|<init>(kotlin.Int){}[0]
-
-    final val lo // org.kotlincrypto.bitops.endian.internal/Lo.lo|{}lo[0]
-        final fun <get-lo>(): kotlin/Int // org.kotlincrypto.bitops.endian.internal/Lo.lo.<get-lo>|<get-lo>(){}[0]
-
-    final fun equals(kotlin/Any?): kotlin/Boolean // org.kotlincrypto.bitops.endian.internal/Lo.equals|equals(kotlin.Any?){}[0]
-    final fun hashCode(): kotlin/Int // org.kotlincrypto.bitops.endian.internal/Lo.hashCode|hashCode(){}[0]
-    final fun toString(): kotlin/String // org.kotlincrypto.bitops.endian.internal/Lo.toString|toString(){}[0]
-}
-
 sealed class org.kotlincrypto.bitops.endian/Endian { // org.kotlincrypto.bitops.endian/Endian|null[0]
     abstract fun intFrom(kotlin/ByteArray, kotlin/Int): kotlin/Int // org.kotlincrypto.bitops.endian/Endian.intFrom|intFrom(kotlin.ByteArray;kotlin.Int){}[0]
     abstract fun intOf(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Int // org.kotlincrypto.bitops.endian/Endian.intOf|intOf(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
@@ -85,8 +59,6 @@ sealed class org.kotlincrypto.bitops.endian/Endian { // org.kotlincrypto.bitops.
         final inline fun (kotlin/ByteArray).beShortAt(kotlin/Int): kotlin/Short // org.kotlincrypto.bitops.endian/Endian.Big.beShortAt|beShortAt@kotlin.ByteArray(kotlin.Int){}[0]
     }
 
-    final object Companion // org.kotlincrypto.bitops.endian/Endian.Companion|null[0]
-
     final object Little : org.kotlincrypto.bitops.endian/Endian { // org.kotlincrypto.bitops.endian/Endian.Little|null[0]
         final fun equals(kotlin/Any?): kotlin/Boolean // org.kotlincrypto.bitops.endian/Endian.Little.equals|equals(kotlin.Any?){}[0]
         final fun hashCode(): kotlin/Int // org.kotlincrypto.bitops.endian/Endian.Little.hashCode|hashCode(){}[0]
@@ -119,44 +91,3 @@ sealed class org.kotlincrypto.bitops.endian/Endian { // org.kotlincrypto.bitops.
         final inline fun (kotlin/ByteArray).leShortAt(kotlin/Int): kotlin/Short // org.kotlincrypto.bitops.endian/Endian.Little.leShortAt|leShortAt@kotlin.ByteArray(kotlin.Int){}[0]
     }
 }
-
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packAllElsePartial(kotlin/Int, kotlin/Int, kotlin/Int, kotlin/Int, kotlin/Function1<kotlin/ByteArray, kotlin/ByteArray>, kotlin/Function1<kotlin/Int, kotlin/Byte>): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packAllElsePartial|packAllElsePartial@kotlin.ByteArray(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Function1<kotlin.ByteArray,kotlin.ByteArray>;kotlin.Function1<kotlin.Int,kotlin.Byte>){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packBEInt(kotlin/Int, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packBEInt|packBEInt@kotlin.ByteArray(kotlin.Int;kotlin.Int){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packBELong(kotlin/Long, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packBELong|packBELong@kotlin.ByteArray(kotlin.Long;kotlin.Int){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packBEShort(kotlin/Short, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packBEShort|packBEShort@kotlin.ByteArray(kotlin.Short;kotlin.Int){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packLEInt(kotlin/Int, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packLEInt|packLEInt@kotlin.ByteArray(kotlin.Int;kotlin.Int){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packLELong(kotlin/Long, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packLELong|packLELong@kotlin.ByteArray(kotlin.Long;kotlin.Int){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packLEShort(kotlin/Short, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packLEShort|packLEShort@kotlin.ByteArray(kotlin.Short;kotlin.Int){}[0]
-final inline fun (kotlin/ByteArray).org.kotlincrypto.bitops.endian.internal/packPartial(kotlin/Int, kotlin/Int, kotlin/Int, kotlin/Function1<kotlin/Int, kotlin/Byte>): kotlin/ByteArray // org.kotlincrypto.bitops.endian.internal/packPartial|packPartial@kotlin.ByteArray(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Function1<kotlin.Int,kotlin.Byte>){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/B0).org.kotlincrypto.bitops.endian.internal/toBEInt(kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Int // org.kotlincrypto.bitops.endian.internal/toBEInt|toBEInt@org.kotlincrypto.bitops.endian.internal.B0(kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/B0).org.kotlincrypto.bitops.endian.internal/toBELong(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Long // org.kotlincrypto.bitops.endian.internal/toBELong|toBELong@org.kotlincrypto.bitops.endian.internal.B0(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/B0).org.kotlincrypto.bitops.endian.internal/toBEShort(kotlin/Byte): kotlin/Short // org.kotlincrypto.bitops.endian.internal/toBEShort|toBEShort@org.kotlincrypto.bitops.endian.internal.B0(kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/B0).org.kotlincrypto.bitops.endian.internal/toLEInt(kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Int // org.kotlincrypto.bitops.endian.internal/toLEInt|toLEInt@org.kotlincrypto.bitops.endian.internal.B0(kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/B0).org.kotlincrypto.bitops.endian.internal/toLELong(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Long // org.kotlincrypto.bitops.endian.internal/toLELong|toLELong@org.kotlincrypto.bitops.endian.internal.B0(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/B0).org.kotlincrypto.bitops.endian.internal/toLEShort(kotlin/Byte): kotlin/Short // org.kotlincrypto.bitops.endian.internal/toLEShort|toLEShort@org.kotlincrypto.bitops.endian.internal.B0(kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian.internal/Lo).org.kotlincrypto.bitops.endian.internal/toLong(kotlin/Int): kotlin/Long // org.kotlincrypto.bitops.endian.internal/toLong|toLong@org.kotlincrypto.bitops.endian.internal.Lo(kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlineIntFrom(kotlin/ByteArray, kotlin/Int): kotlin/Int // org.kotlincrypto.bitops.endian/beInlineIntFrom|beInlineIntFrom@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlineIntOf(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Int // org.kotlincrypto.bitops.endian/beInlineIntOf|beInlineIntOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlineLongFrom(kotlin/ByteArray, kotlin/Int): kotlin/Long // org.kotlincrypto.bitops.endian/beInlineLongFrom|beInlineLongFrom@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlineLongOf(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Long // org.kotlincrypto.bitops.endian/beInlineLongOf|beInlineLongOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlinePackUnsafe(kotlin/Int, kotlin/ByteArray, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian/beInlinePackUnsafe|beInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Int;kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlinePackUnsafe(kotlin/Int, kotlin/ByteArray, kotlin/Int, kotlin/Int, kotlin/Int =...): kotlin/ByteArray // org.kotlincrypto.bitops.endian/beInlinePackUnsafe|beInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Int;kotlin.ByteArray;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlinePackUnsafe(kotlin/Long, kotlin/ByteArray, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian/beInlinePackUnsafe|beInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Long;kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlinePackUnsafe(kotlin/Long, kotlin/ByteArray, kotlin/Int, kotlin/Int, kotlin/Int =...): kotlin/ByteArray // org.kotlincrypto.bitops.endian/beInlinePackUnsafe|beInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Long;kotlin.ByteArray;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlinePackUnsafe(kotlin/Short, kotlin/ByteArray, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian/beInlinePackUnsafe|beInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Short;kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlinePackUnsafe(kotlin/Short, kotlin/ByteArray, kotlin/Int, kotlin/Int, kotlin/Int =...): kotlin/ByteArray // org.kotlincrypto.bitops.endian/beInlinePackUnsafe|beInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Short;kotlin.ByteArray;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlineShortFrom(kotlin/ByteArray, kotlin/Int): kotlin/Short // org.kotlincrypto.bitops.endian/beInlineShortFrom|beInlineShortFrom@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/beInlineShortOf(kotlin/Byte, kotlin/Byte): kotlin/Short // org.kotlincrypto.bitops.endian/beInlineShortOf|beInlineShortOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlineIntFrom(kotlin/ByteArray, kotlin/Int): kotlin/Int // org.kotlincrypto.bitops.endian/leInlineIntFrom|leInlineIntFrom@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlineIntOf(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Int // org.kotlincrypto.bitops.endian/leInlineIntOf|leInlineIntOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlineLongFrom(kotlin/ByteArray, kotlin/Int): kotlin/Long // org.kotlincrypto.bitops.endian/leInlineLongFrom|leInlineLongFrom@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlineLongOf(kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte, kotlin/Byte): kotlin/Long // org.kotlincrypto.bitops.endian/leInlineLongOf|leInlineLongOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlinePackUnsafe(kotlin/Int, kotlin/ByteArray, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian/leInlinePackUnsafe|leInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Int;kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlinePackUnsafe(kotlin/Int, kotlin/ByteArray, kotlin/Int, kotlin/Int, kotlin/Int =...): kotlin/ByteArray // org.kotlincrypto.bitops.endian/leInlinePackUnsafe|leInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Int;kotlin.ByteArray;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlinePackUnsafe(kotlin/Long, kotlin/ByteArray, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian/leInlinePackUnsafe|leInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Long;kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlinePackUnsafe(kotlin/Long, kotlin/ByteArray, kotlin/Int, kotlin/Int, kotlin/Int =...): kotlin/ByteArray // org.kotlincrypto.bitops.endian/leInlinePackUnsafe|leInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Long;kotlin.ByteArray;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlinePackUnsafe(kotlin/Short, kotlin/ByteArray, kotlin/Int): kotlin/ByteArray // org.kotlincrypto.bitops.endian/leInlinePackUnsafe|leInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Short;kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlinePackUnsafe(kotlin/Short, kotlin/ByteArray, kotlin/Int, kotlin/Int, kotlin/Int =...): kotlin/ByteArray // org.kotlincrypto.bitops.endian/leInlinePackUnsafe|leInlinePackUnsafe@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Short;kotlin.ByteArray;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlineShortFrom(kotlin/ByteArray, kotlin/Int): kotlin/Short // org.kotlincrypto.bitops.endian/leInlineShortFrom|leInlineShortFrom@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.ByteArray;kotlin.Int){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/leInlineShortOf(kotlin/Byte, kotlin/Byte): kotlin/Short // org.kotlincrypto.bitops.endian/leInlineShortOf|leInlineShortOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Byte;kotlin.Byte){}[0]
-final inline fun (org.kotlincrypto.bitops.endian/Endian.Companion).org.kotlincrypto.bitops.endian/longOf(kotlin/Int, kotlin/Int): kotlin/Long // org.kotlincrypto.bitops.endian/longOf|longOf@org.kotlincrypto.bitops.endian.Endian.Companion(kotlin.Int;kotlin.Int){}[0]

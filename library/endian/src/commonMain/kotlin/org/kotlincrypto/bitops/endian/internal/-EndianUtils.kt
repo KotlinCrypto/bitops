@@ -20,20 +20,16 @@ package org.kotlincrypto.bitops.endian.internal
 import kotlin.jvm.JvmInline
 
 @JvmInline
-@PublishedApi
-internal value class B0 @PublishedApi internal constructor(@PublishedApi internal val b0: Byte)
+internal value class B0 internal constructor(internal val b0: Byte)
 
 @JvmInline
-@PublishedApi
-internal value class Lo @PublishedApi internal constructor(@PublishedApi internal val lo: Int)
+internal value class Lo internal constructor(internal val lo: Int)
 
-@PublishedApi
 internal inline fun Lo.toLong(hi: Int): Long {
     return  ((hi.toLong() and 0xffffffff) shl 32) or
             ((lo.toLong() and 0xffffffff)       )
 }
 
-@PublishedApi
 internal inline fun B0.toBEShort(b1: Byte): Short {
     return  (
                 ((b0.toInt() and 0xff) shl  8) or
@@ -41,7 +37,6 @@ internal inline fun B0.toBEShort(b1: Byte): Short {
             ).toShort()
 }
 
-@PublishedApi
 internal inline fun B0.toLEShort(b1: Byte): Short {
     return  (
                 ((b0.toInt() and 0xff)       ) or
@@ -49,7 +44,6 @@ internal inline fun B0.toLEShort(b1: Byte): Short {
             ).toShort()
 }
 
-@PublishedApi
 internal inline fun B0.toBEInt(b1: Byte, b2: Byte, b3: Byte): Int {
     return  ((b0.toInt()         ) shl 24) or
             ((b1.toInt() and 0xff) shl 16) or
@@ -57,7 +51,6 @@ internal inline fun B0.toBEInt(b1: Byte, b2: Byte, b3: Byte): Int {
             ((b3.toInt() and 0xff)       )
 }
 
-@PublishedApi
 internal inline fun B0.toLEInt(b1: Byte, b2: Byte, b3: Byte): Int {
     return  ((b0.toInt() and 0xff)       ) or
             ((b1.toInt() and 0xff) shl  8) or
@@ -65,31 +58,26 @@ internal inline fun B0.toLEInt(b1: Byte, b2: Byte, b3: Byte): Int {
             ((b3.toInt()         ) shl 24)
 }
 
-@PublishedApi
 internal inline fun B0.toBELong(b1: Byte, b2: Byte, b3: Byte, b4: Byte, b5: Byte, b6: Byte, b7: Byte): Long {
     return Lo(B0(b4).toBEInt(b5, b6, b7)).toLong(hi = this.toBEInt(b1, b2, b3))
 }
 
-@PublishedApi
 internal inline fun B0.toLELong(b1: Byte, b2: Byte, b3: Byte, b4: Byte, b5: Byte, b6: Byte, b7: Byte): Long {
     return Lo(this.toLEInt(b1, b2, b3)).toLong(hi = B0(b4).toLEInt(b5, b6, b7))
 }
 
-@PublishedApi
 internal inline fun ByteArray.packBEShort(target: Short, offset: Int): ByteArray {
     this[offset    ] = (target.toInt() ushr 8).toByte()
     this[offset + 1] = (target               ).toByte()
     return this
 }
 
-@PublishedApi
 internal inline fun ByteArray.packLEShort(target: Short, offset: Int): ByteArray {
     this[offset    ] = (target               ).toByte()
     this[offset + 1] = (target.toInt() ushr 8).toByte()
     return this
 }
 
-@PublishedApi
 internal inline fun ByteArray.packBEInt(target: Int, offset: Int): ByteArray {
     this[offset    ] = (target ushr 24).toByte()
     this[offset + 1] = (target ushr 16).toByte()
@@ -98,7 +86,6 @@ internal inline fun ByteArray.packBEInt(target: Int, offset: Int): ByteArray {
     return this
 }
 
-@PublishedApi
 internal inline fun ByteArray.packLEInt(target: Int, offset: Int): ByteArray {
     this[offset    ] = (target        ).toByte()
     this[offset + 1] = (target ushr  8).toByte()
@@ -107,7 +94,6 @@ internal inline fun ByteArray.packLEInt(target: Int, offset: Int): ByteArray {
     return this
 }
 
-@PublishedApi
 internal inline fun ByteArray.packBELong(target: Long, offset: Int): ByteArray {
     this[offset    ] = (target ushr 56).toByte()
     this[offset + 1] = (target ushr 48).toByte()
@@ -120,7 +106,6 @@ internal inline fun ByteArray.packBELong(target: Long, offset: Int): ByteArray {
     return this
 }
 
-@PublishedApi
 internal inline fun ByteArray.packLELong(target: Long, offset: Int): ByteArray {
     this[offset    ] = (target        ).toByte()
     this[offset + 1] = (target ushr  8).toByte()
@@ -133,7 +118,6 @@ internal inline fun ByteArray.packLELong(target: Long, offset: Int): ByteArray {
     return this
 }
 
-@PublishedApi
 internal inline fun ByteArray.packAllElsePartial(
     offset: Int,
     startIndex: Int,
@@ -147,7 +131,6 @@ internal inline fun ByteArray.packAllElsePartial(
     else packPartial(offset, startIndex, endIndex, ushr)
 }
 
-@PublishedApi
 internal inline fun ByteArray.packPartial(
     offset: Int,
     startIndex: Int,
