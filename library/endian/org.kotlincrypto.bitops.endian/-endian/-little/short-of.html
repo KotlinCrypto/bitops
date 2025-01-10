@@ -63,27 +63,27 @@
   <div class="cover ">
     <h1 class="cover"><span>short</span><wbr><span><span>Of</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="short-of.html"><span class="token function">shortOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">b0<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b1<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/KotlinCrypto/bitops/tree/master/library/endian/src/commonMain/kotlin/org/kotlincrypto/bitops/endian/Endian.kt#L1279">source</a>)</span></span></div><p class="paragraph">Convert 2 bytes to a Short.</p><p class="paragraph">e.g.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val number = 2702.toShort()
-val b = ByteArray(2) { -100 }
-println(b.toList())
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:endian:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="short-of.html"><span class="token function">shortOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">b0<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">, </span></span><span class="parameter ">b1<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Short///PointingToDeclaration/">Short</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/KotlinCrypto/bitops/tree/master/library/endian/src/commonMain/kotlin/org/kotlincrypto/bitops/endian/Endian.kt#L2303">source</a>)</span></span></div><p class="paragraph">Convert <code class="lang-kotlin">2</code> bytes to a Short.</p><p class="paragraph">e.g.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val source = 2702.toShort()
+val dest = ByteArray(2) { -100 }
+println(dest.toList())
 // [-100, -100]
 
-Endian.Big.pack(number, b, 0)
-println(b.toList())
+Endian.Big.pack(source, dest, 0)
+println(dest.toList())
 // [10, -114]
 Endian.Big.shortOf(
-    b[0],
-    b[1],
+    dest[0],
+    dest[1],
 ).let { println(it) }
 // 2702
-b.fill(-100)
+dest.fill(-100)
 
-Endian.Little.pack(number, b, 0)
-println(b.toList())
+Endian.Little.pack(source, dest, 0)
+println(dest.toList())
 // [-114, 10]
 Endian.Little.shortOf(
-    b[0],
-    b[1],
+    dest[0],
+    dest[1],
 ).let { println(it) }
 // 2702</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":library:endian:dokkaHtmlPartial/commonMain" data-filterable-set=":library:endian:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="short-from.html"><span>Endian.</span><wbr><span>Little.</span><wbr><span>shortFrom</span></a></div></span></div><div></div></div></div></div></div></div>
 </div>
