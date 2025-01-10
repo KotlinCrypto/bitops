@@ -167,7 +167,7 @@ internal inline fun ByteArray.packNumberAllElsePartial(
     ushr: (bits: Int) -> Byte,
 ): ByteArray {
     // Check endIndex first
-    return if (sourceIndexEnd == numberSizeBytes && sourceIndexStart == 0) packNumber()
+    return if (sourceIndexEnd == numberSizeBytes && sourceIndexStart == 0) packNumber(this)
     else packNumberPartial(destOffset, sourceIndexStart, sourceIndexEnd, ushr)
 }
 
@@ -177,9 +177,9 @@ internal inline fun ByteArray.packNumberPartial(
     sourceIndexEnd: Int,
     ushr: (bits: Int) -> Byte,
 ): ByteArray {
-    var pos = destOffset
+    var destPos = destOffset
     for (i in sourceIndexStart..<sourceIndexEnd) {
-        this[pos++] = ushr(Byte.SIZE_BITS * i)
+        this[destPos++] = ushr(Byte.SIZE_BITS * i)
     }
     return this
 }
@@ -191,20 +191,23 @@ internal inline fun ByteArray.packArray(
     numberSizeBytes: Int,
     packNumber: ByteArray.(sourcePos: Int, destPos: Int) -> ByteArray,
 ): ByteArray {
-    for (i in sourceIndexStart..<sourceIndexEnd) {
-        packNumber(i, (i * numberSizeBytes) + destOffset)
+    var destPos = destOffset
+    var sourcePos = sourceIndexStart
+    while (sourcePos < sourceIndexEnd) {
+        packNumber(this, sourcePos++, destPos)
+        destPos += numberSizeBytes
     }
     return this
 }
 
-internal inline fun <Dest: Any> Dest.packArray(
+internal inline fun <TypedArray: Any> TypedArray.packArray(
     source: ByteArray,
     destOffset: Int,
     sourceIndexStart: Int,
     sourceIndexEnd: Int,
     numberSizeBytes: Int,
     unpackNumber: ByteArray.(sourcePos: Int, destPos: Int) -> Unit,
-): Dest {
+): TypedArray {
     var destPos = destOffset
     var sourcePos = sourceIndexStart
     while (sourcePos < sourceIndexEnd) {
