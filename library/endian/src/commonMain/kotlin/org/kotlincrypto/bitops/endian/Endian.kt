@@ -26,31 +26,31 @@ import kotlin.jvm.JvmStatic
 public sealed class Endian private constructor() {
 
     /**
-     * Convert 2 bytes to a Short.
+     * Convert `2` bytes to a Short.
      *
      * e.g.
      *
-     *     val number = 2702.toShort()
-     *     val b = ByteArray(2) { -100 }
-     *     println(b.toList())
+     *     val source = 2702.toShort()
+     *     val dest = ByteArray(2) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100]
      *
-     *     Endian.Big.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [10, -114]
      *     Endian.Big.shortOf(
-     *         b[0],
-     *         b[1],
+     *         dest[0],
+     *         dest[1],
      *     ).let { println(it) }
      *     // 2702
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-114, 10]
      *     Endian.Little.shortOf(
-     *         b[0],
-     *         b[1],
+     *         dest[0],
+     *         dest[1],
      *     ).let { println(it) }
      *     // 2702
      *
@@ -62,35 +62,35 @@ public sealed class Endian private constructor() {
     ): Short
 
     /**
-     * Convert 4 bytes to an Int.
+     * Convert `4` bytes to an Int.
      *
      * e.g.
      *
-     *     val number = -77362181
-     *     val b = ByteArray(4) { -100 }
-     *     println(b.toList())
+     *     val source = -77362181
+     *     val dest = ByteArray(4) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100]
      *
-     *     Endian.Big.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, 99, -117, -5]
      *     Endian.Big.intOf(
-     *         b[0],
-     *         b[1],
-     *         b[2],
-     *         b[3],
+     *         dest[0],
+     *         dest[1],
+     *         dest[2],
+     *         dest[3],
      *     ).let { println(it) }
      *     // -77362181
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, -117, 99, -5]
      *     Endian.Little.intOf(
-     *         b[0],
-     *         b[1],
-     *         b[2],
-     *         b[3],
+     *         dest[0],
+     *         dest[1],
+     *         dest[2],
+     *         dest[3],
      *     ).let { println(it) }
      *     // -77362181
      *
@@ -104,43 +104,43 @@ public sealed class Endian private constructor() {
     ): Int
 
     /**
-     * Convert 8 bytes to a Long.
+     * Convert `8` bytes to a Long.
      *
      * e.g.
      *
-     *     val number = 9223372034707292160L
-     *     val b = ByteArray(8) { -100 }
-     *     println(b.toList())
+     *     val source = 9223372034707292160L
+     *     val dest = ByteArray(8) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100, -100, -100, -100, -100]
      *
-     *     Endian.Big.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [127, -1, -1, -1, -128, 0, 0, 0]
      *     Endian.Big.longOf(
-     *         b[0],
-     *         b[1],
-     *         b[2],
-     *         b[3],
-     *         b[4],
-     *         b[5],
-     *         b[6],
-     *         b[7],
+     *         dest[0],
+     *         dest[1],
+     *         dest[2],
+     *         dest[3],
+     *         dest[4],
+     *         dest[5],
+     *         dest[6],
+     *         dest[7],
      *     ).let { println(it) }
      *     // 9223372034707292160
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [0, 0, 0, -128, -1, -1, -1, 127]
      *     Endian.Little.longOf(
-     *         b[0],
-     *         b[1],
-     *         b[2],
-     *         b[3],
-     *         b[4],
-     *         b[5],
-     *         b[6],
-     *         b[7],
+     *         dest[0],
+     *         dest[1],
+     *         dest[2],
+     *         dest[3],
+     *         dest[4],
+     *         dest[5],
+     *         dest[6],
+     *         dest[7],
      *     ).let { println(it) }
      *     // 9223372034707292160
      *
@@ -158,36 +158,36 @@ public sealed class Endian private constructor() {
     ): Long
 
     /**
-     * Convert 2 bytes from [source], starting at index [offset], to a Short.
+     * Convert `2` bytes from [source] ByteArray, starting at index [offset], to a Short.
      *
      * e.g.
      *
-     *     val number = 2702.toShort()
-     *     val b = ByteArray(2) { -100 }
-     *     println(b.toList())
+     *     val source = 2702.toShort()
+     *     val dest = ByteArray(2) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100]
      *
-     *     Endian.Big.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [10, -114]
-     *     println(Endian.Big.shortFrom(b, 0))
+     *     println(Endian.Big.shortFrom(dest, 0))
      *     // 2702
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-114, 10]
-     *     println(Endian.Little.shortFrom(b, 0))
+     *     println(Endian.Little.shortFrom(dest, 0))
      *     // 2702
      *
      * @see [shortOf]
      * @see [Big.beShortAt]
      * @see [Little.leShortAt]
      *
-     * @param [source] The array to access bytes from.
+     * @param [source] The ByteArray to access bytes from.
      * @param [offset] The index to start at when retrieving bytes from [source].
      *
-     * @throws [IndexOutOfBoundsException] when [offset] is inappropriate.
+     * @throws [IndexOutOfBoundsException] when not enough bytes are available in array from [offset].
      * */
     public abstract fun shortFrom(
         source: ByteArray,
@@ -195,36 +195,36 @@ public sealed class Endian private constructor() {
     ): Short
 
     /**
-     * Convert 4 bytes from [source], starting at index [offset], to an Int.
+     * Convert `4` bytes from [source] ByteArray, starting at index [offset], to an Int.
      *
      * e.g.
      *
-     *     val number = -77362181
-     *     val b = ByteArray(4) { -100 }
-     *     println(b.toList())
+     *     val source = -77362181
+     *     val dest = ByteArray(4) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100]
      *
-     *     Endian.Big.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, 99, -117, -5]
-     *     println(Endian.Big.intFrom(b, 0))
+     *     println(Endian.Big.intFrom(dest, 0))
      *     // -77362181
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, -117, 99, -5]
-     *     println(Endian.Little.intFrom(b, 0))
+     *     println(Endian.Little.intFrom(dest, 0))
      *     // -77362181
      *
      * @see [intOf]
      * @see [Big.beIntAt]
      * @see [Little.leIntAt]
      *
-     * @param [source] The array to access bytes from.
+     * @param [source] The ByteArray to access bytes from.
      * @param [offset] The index to start at when retrieving bytes from [source].
      *
-     * @throws [IndexOutOfBoundsException] when [offset] is inappropriate.
+     * @throws [IndexOutOfBoundsException] when not enough bytes are available in array from [offset].
      * */
     public abstract fun intFrom(
         source: ByteArray,
@@ -232,36 +232,36 @@ public sealed class Endian private constructor() {
     ): Int
 
     /**
-     * Convert 8 bytes from [source], starting at index [offset], to a Long.
+     * Convert `8` bytes from [source] ByteArray, starting at index [offset], to a Long.
      *
      * e.g.
      *
-     *     val number = 9223372034707292160L
-     *     val b = ByteArray(8) { -100 }
-     *     println(b.toList())
+     *     val source = 9223372034707292160L
+     *     val dest = ByteArray(8) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100, -100, -100, -100, -100]
      *
-     *     Endian.Big.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [127, -1, -1, -1, -128, 0, 0, 0]
-     *     println(Endian.Big.longFrom(b, 0))
+     *     println(Endian.Big.longFrom(dest, 0))
      *     // 9223372034707292160
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [0, 0, 0, -128, -1, -1, -1, 127]
-     *     println(Endian.Little.longFrom(b, 0))
+     *     println(Endian.Little.longFrom(dest, 0))
      *     // 9223372034707292160
      *
      * @see [longOf]
      * @see [Big.beLongAt]
      * @see [Little.leLongAt]
      *
-     * @param [source] The array to access bytes from.
+     * @param [source] The ByteArray to access bytes from.
      * @param [offset] The index to start at when retrieving bytes from [source].
      *
-     * @throws [IndexOutOfBoundsException] when [offset] is inappropriate.
+     * @throws [IndexOutOfBoundsException] when not enough bytes are available in array from [offset].
      * */
     public abstract fun longFrom(
         source: ByteArray,
@@ -269,652 +269,1387 @@ public sealed class Endian private constructor() {
     ): Long
 
     /**
-     * Packs all 2 bytes of [target] Short into [dest], starting at index [destOffset].
+     * Packs `2` bytes from [source] Short into [dest] ByteArray, starting at [destOffset].
      *
      * e.g.
      *
-     *     val number = 2702.toShort()
-     *     val b = ByteArray(4) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100]
-     *
-     *     Endian.Big.pack(number, b, 1)
-     *     println(b.toList())
-     *     // [-100, 10, -114, -100]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 2)
-     *     println(b.toList())
-     *     // [-100, -100, -114, 10]
-     *
-     * @see [packUnsafe]
-     * @see [Big.bePack]
-     * @see [Little.lePack]
-     *
-     * @param [target] The Short to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
-     * @param [destOffset] The position in [dest] to start packing.
-     *
-     * @return The [dest] array
-     *
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
-     * */
-    public fun pack(
-        target: Short,
-        dest: ByteArray,
-        destOffset: Int,
-    ): ByteArray {
-        checkPackParameters(
-            sizeArray = dest.size,
-            offset = destOffset,
-            startIndex = 0,
-            endIndex = Short.SIZE_BYTES,
-            sizeBytes = Short.SIZE_BYTES,
-        )
-        return packUnsafe(target, dest, destOffset)
-    }
-
-    /**
-     * Packs all 4 bytes of [target] Int into [dest], starting at index [destOffset].
-     *
-     * e.g.
-     *
-     *     val number = -77362181
-     *     val b = ByteArray(6) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100, -100, -100]
-     *
-     *     Endian.Big.pack(number, b, 1)
-     *     println(b.toList())
-     *     // [-100, -5, 99, -117, -5, -100]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 2)
-     *     println(b.toList())
-     *     // [-100, -100, -5, -117, 99, -5]
-     *
-     * @see [packUnsafe]
-     * @see [Big.bePack]
-     * @see [Little.lePack]
-     *
-     * @param [target] The Int to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
-     * @param [destOffset] The position in [dest] to start packing.
-     *
-     * @return The [dest] array
-     *
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
-     * */
-    public fun pack(
-        target: Int,
-        dest: ByteArray,
-        destOffset: Int,
-    ): ByteArray {
-        checkPackParameters(
-            sizeArray = dest.size,
-            offset = destOffset,
-            startIndex = 0,
-            endIndex = Int.SIZE_BYTES,
-            sizeBytes = Int.SIZE_BYTES,
-        )
-        return packUnsafe(target, dest, destOffset)
-    }
-
-    /**
-     * Packs all 8 bytes of [target] Long into [dest], starting at index [destOffset].
-     *
-     * e.g.
-     *
-     *     val number = 9223372034707292160L
-     *     val b = ByteArray(11) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
-     *
-     *     Endian.Big.pack(number, b, 1)
-     *     println(b.toList())
-     *     // [-100, 127, -1, -1, -1, -128, 0, 0, 0, -100, -100]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 3)
-     *     println(b.toList())
-     *     // [-100, -100, -100, 0, 0, 0, -128, -1, -1, -1, 127]
-     *
-     * @see [packUnsafe]
-     * @see [Big.bePack]
-     * @see [Little.lePack]
-     *
-     * @param [target] The Long to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
-     * @param [destOffset] The position in [dest] to start packing.
-     *
-     * @return The [dest] array
-     *
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
-     * */
-    public fun pack(
-        target: Long,
-        dest: ByteArray,
-        destOffset: Int,
-    ): ByteArray {
-        checkPackParameters(
-            sizeArray = dest.size,
-            offset = destOffset,
-            startIndex = 0,
-            endIndex = Long.SIZE_BYTES,
-            sizeBytes = Long.SIZE_BYTES,
-        )
-        return packUnsafe(target, dest, destOffset)
-    }
-
-    /**
-     * Packs bytes of [target] Short from [startIndex] (inclusive) to [endIndex]
-     * (exclusive) into [dest], starting at [destOffset]. If [startIndex] is 0
-     * and [endIndex] is [Short.SIZE_BYTES], the more performant [pack] function
-     * will be utilized.
-     *
-     * e.g.
-     *
-     *     val number = 2702.toShort()
-     *     val b = ByteArray(2) { -100 }
-     *     println(b.toList())
+     *     val source = 2702.toShort()
+     *     val dest = ByteArray(2) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100]
      *
-     *     Endian.Big.pack(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [10, -114]
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Big.pack(number, b, 1, startIndex = 0, endIndex = 1)
-     *     println(b.toList())
-     *     // [-100, 10]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-114, 10]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 1, startIndex = 1)
-     *     println(b.toList())
-     *     // [-100, 10]
      *
      * @see [packUnsafe]
-     * @see [Big.bePack]
-     * @see [Little.lePack]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
      *
-     * @param [target] The Short to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     * @param [source] The Short to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
-     * @param [startIndex] The beginning (inclusive) of the [target] subrange to unpack.
-     * @param [endIndex] The end (exclusive) of the [target] subrange to unpack,
-     *   [Short.SIZE_BYTES] by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when
-     *   [startIndex] or [endIndex] are out of range of the array indices, or when
-     *   `startIndex > endIndex`.
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
      * */
     public fun pack(
-        target: Short,
+        source: Short,
         dest: ByteArray,
         destOffset: Int,
-        startIndex: Int,
-        endIndex: Int = Short.SIZE_BYTES,
     ): ByteArray {
         checkPackParameters(
-            sizeArray = dest.size,
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Short.SIZE_BYTES,
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = Short.SIZE_BYTES,
+            sourceByteIndexStart = 0,
+            sourceByteIndexEnd = Short.SIZE_BYTES,
         )
-        return packUnsafe(target, dest, destOffset, startIndex, endIndex)
+        return packUnsafe(source, dest, destOffset)
     }
 
     /**
-     * Packs bytes of [target] Int from [startIndex] (inclusive) to [endIndex]
-     * (exclusive) into [dest], starting at [destOffset]. If [startIndex] is 0
-     * and [endIndex] is [Int.SIZE_BYTES], the more performant [pack] function
-     * will be utilized.
+     * Packs bytes from [source] Short (max `2` bytes) from [sourceIndexStart] (inclusive) to
+     * [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
      *
      * e.g.
      *
-     *     val number = -77362181
-     *     val b = ByteArray(4) { -100 }
-     *     println(b.toList())
+     *     val source = 2702.toShort()
+     *     val dest = ByteArray(2) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
+     *     // [10, -114]
+     *     dest.fill(-100)
+     *
+     *     Endian.Big.pack(source, dest, 1, sourceIndexStart = 0, sourceIndexEnd = 1)
+     *     println(dest.toList())
+     *     // [-100, 10]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
+     *     // [-114, 10]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 1, sourceIndexStart = 1)
+     *     println(dest.toList())
+     *     // [-100, 10]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The Short to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] byte subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] byte subrange, [Short.SIZE_BYTES] by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the number's byte indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: Short,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int = Short.SIZE_BYTES,
+    ): ByteArray {
+        checkPackParameters(
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = Short.SIZE_BYTES,
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
+
+    /**
+     * Packs bytes from [source] ShortArray (max `size * 2` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = ShortArray(3) { i -> (i + 2701).toShort() }
+     *     val dest = ByteArray(source.size * Short.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100]
+     *     // [2701, 2702, 2703]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.pack(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [10, -115, 10, -114, 10, -113]
+     *     // [2701, 2702, 2703]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.pack(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-115, 10, -114, 10, -113, 10]
+     *     // [0, 2702, 2703]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The ShortArray to retrieve Shorts from to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange, `0` by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange, `source.size` by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the array indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: ShortArray,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int = 0,
+        sourceIndexEnd: Int = source.size,
+    ): ByteArray {
+        checkPackParameters(
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = source.size * Short.SIZE_BYTES,
+            sourceByteIndexStart = sourceIndexStart * Short.SIZE_BYTES,
+            sourceByteIndexEnd = sourceIndexEnd * Short.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
+
+    /**
+     * Packs Shorts from [source] ByteArray (max `size / 2` Shorts) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ShortArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = ShortArray(3) { i -> (i + 2701).toShort() }
+     *     val dest = ByteArray(source.size * Short.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100]
+     *     // [2701, 2702, 2703]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.pack(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [10, -115, 10, -114, 10, -113]
+     *     // [2701, 2702, 2703]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.pack(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-115, 10, -114, 10, -113, 10]
+     *     // [0, 2702, 2703]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The ByteArray to retrieve bytes from to convert into Shorts.
+     * @param [dest] The ShortArray to pack Shorts into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the array indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] if [sourceIndexStart] to [sourceIndexEnd] is not a factor of [Short.SIZE_BYTES]
+     * @throws [IndexOutOfBoundsException] when subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: ByteArray,
+        dest: ShortArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int,
+    ): ShortArray {
+        checkPackParameters(
+            destByteCapacity = dest.size * Short.SIZE_BYTES,
+            destByteIndexStart = destOffset * Short.SIZE_BYTES,
+            destByteIndexEnd = dest.size * Short.SIZE_BYTES,
+            sourceByteAvailability = source.size,
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+        )
+        checkSourceRemainder(
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
+
+    /**
+     * Packs `4` bytes from [source] Int into [dest] ByteArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = -77362181
+     *     val dest = ByteArray(4) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100]
      *
-     *     Endian.Big.pack(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, 99, -117, -5]
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Big.pack(number, b, 2, startIndex = 1, endIndex = 3)
-     *     println(b.toList())
-     *     // [-100, -100, 99, -117]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, -117, 99, -5]
-     *     b.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 1, startIndex = 3)
-     *     println(b.toList())
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The Int to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: Int,
+        dest: ByteArray,
+        destOffset: Int,
+    ): ByteArray {
+        checkPackParameters(
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = Int.SIZE_BYTES,
+            sourceByteIndexStart = 0,
+            sourceByteIndexEnd = Int.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset)
+    }
+
+    /**
+     * Packs bytes from [source] Int (max `4` bytes) from [sourceIndexStart] (inclusive) to
+     * [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = -77362181
+     *     val dest = ByteArray(4) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100, -100, -100]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
+     *     // [-5, 99, -117, -5]
+     *     dest.fill(-100)
+     *
+     *     Endian.Big.pack(source, dest, 2, sourceIndexStart = 1, sourceIndexEnd = 3)
+     *     println(dest.toList())
+     *     // [-100, -100, 99, -117]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
+     *     // [-5, -117, 99, -5]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 1, sourceIndexStart = 3)
+     *     println(dest.toList())
      *     // [-100, -5, -100, -100]
      *
      * @see [packUnsafe]
-     * @see [Big.bePack]
-     * @see [Little.lePack]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
      *
-     * @param [target] The Int to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     * @param [source] The Int to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
-     * @param [startIndex] The beginning (inclusive) of the [target] subrange to unpack.
-     * @param [endIndex] The end (exclusive) of the [target] subrange to unpack,
-     *   [Int.SIZE_BYTES] by default.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] byte subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] byte subrange, [Int.SIZE_BYTES] by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when
-     *   [startIndex] or [endIndex] are out of range of the array indices, or when
-     *   `startIndex > endIndex`.
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the number's byte indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
      * */
     public fun pack(
-        target: Int,
+        source: Int,
         dest: ByteArray,
         destOffset: Int,
-        startIndex: Int,
-        endIndex: Int = Int.SIZE_BYTES,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int = Int.SIZE_BYTES,
     ): ByteArray {
         checkPackParameters(
-            sizeArray = dest.size,
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Int.SIZE_BYTES,
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = Int.SIZE_BYTES,
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
         )
-        return packUnsafe(target, dest, destOffset, startIndex, endIndex)
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
     }
 
     /**
-     * Packs bytes of [target] Long from [startIndex] (inclusive) to [endIndex]
-     * (exclusive) into [dest], starting at [destOffset]. If [startIndex] is 0
-     * and [endIndex] is [Long.SIZE_BYTES], the more performant [pack] function
-     * will be utilized.
+     * Packs bytes from [source] IntArray (max `size * 4` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
      *
      * e.g.
      *
-     *     val number = 9223372034707292160L
-     *     val b = ByteArray(8) { -100 }
-     *     println(b.toList())
+     *     val source = IntArray(2) { i -> i - 77362181 }
+     *     val dest = ByteArray(source.size * Int.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [-77362181, -77362180]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.pack(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, 99, -117, -5, -5, 99, -117, -4]
+     *     // [-77362181, -77362180]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.pack(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, -117, 99, -5, -4, -117, 99, -5]
+     *     // [0, -77362180]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The IntArray to retrieve Ints from to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange, `0` by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange, `source.size` by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the array indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: IntArray,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int = 0,
+        sourceIndexEnd: Int = source.size,
+    ): ByteArray {
+        checkPackParameters(
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = source.size * Int.SIZE_BYTES,
+            sourceByteIndexStart = sourceIndexStart * Int.SIZE_BYTES,
+            sourceByteIndexEnd = sourceIndexEnd * Int.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
+
+    /**
+     * Packs Ints from [source] ByteArray (max `size / 4` Ints) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] IntArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = IntArray(2) { i -> i - 77362181 }
+     *     val dest = ByteArray(source.size * Int.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [-77362181, -77362180]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.pack(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, 99, -117, -5, -5, 99, -117, -4]
+     *     // [-77362181, -77362180]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.pack(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, -117, 99, -5, -4, -117, 99, -5]
+     *     // [0, -77362180]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The ByteArray to retrieve bytes from to convert into Ints.
+     * @param [dest] The IntArray to pack Ints into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the array indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] if [sourceIndexStart] to [sourceIndexEnd] is not a factor of [Int.SIZE_BYTES]
+     * @throws [IndexOutOfBoundsException] when subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: ByteArray,
+        dest: IntArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int,
+    ): IntArray {
+        checkPackParameters(
+            destByteCapacity = dest.size * Int.SIZE_BYTES,
+            destByteIndexStart = destOffset * Int.SIZE_BYTES,
+            destByteIndexEnd = dest.size * Int.SIZE_BYTES,
+            sourceByteAvailability = source.size,
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+        )
+        checkSourceRemainder(
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
+
+    /**
+     * Packs `8` bytes from [source] Long into [dest] ByteArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = 9223372034707292160L
+     *     val dest = ByteArray(8) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100, -100, -100, -100, -100]
      *
-     *     Endian.Big.pack(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [127, -1, -1, -1, -128, 0, 0, 0]
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Big.pack(number, b, 2, startIndex = 1, endIndex = 7)
-     *     println(b.toList())
-     *     // [-100, -100, -1, -1, -1, -128, 0, 0]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.pack(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
      *     // [0, 0, 0, -128, -1, -1, -1, 127]
-     *     b.fill(-100)
      *
-     *     Endian.Little.pack(number, b, 1, startIndex = 3)
-     *     println(b.toList())
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The Long to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
+     * */
+    public fun pack(
+        source: Long,
+        dest: ByteArray,
+        destOffset: Int,
+    ): ByteArray {
+        checkPackParameters(
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = Long.SIZE_BYTES,
+            sourceByteIndexStart = 0,
+            sourceByteIndexEnd = Long.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset)
+    }
+
+    /**
+     * Packs bytes from [source] Long (max `8` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
+     *
+     * e.g.
+     *
+     *     val source = 9223372034707292160L
+     *     val dest = ByteArray(8) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *
+     *     Endian.Big.pack(source, dest, 0)
+     *     println(dest.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0]
+     *     dest.fill(-100)
+     *
+     *     Endian.Big.pack(source, dest, 2, sourceIndexStart = 1, sourceIndexEnd = 7)
+     *     println(dest.toList())
+     *     // [-100, -100, -1, -1, -1, -128, 0, 0]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 0)
+     *     println(dest.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.pack(source, dest, 1, sourceIndexStart = 3)
+     *     println(dest.toList())
      *     // [-100, -128, -1, -1, -1, 127, -100, -100]
      *
      * @see [packUnsafe]
-     * @see [Big.bePack]
-     * @see [Little.lePack]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
      *
-     * @param [target] The Long to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     * @param [source] The Long to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
-     * @param [startIndex] The beginning (inclusive) of the [target] subrange to unpack.
-     * @param [endIndex] The end (exclusive) of the [target] subrange to unpack,
-     *   [Long.SIZE_BYTES] by default.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] byte subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] byte subrange, [Long.SIZE_BYTES] by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when
-     *   [startIndex] or [endIndex] are out of range of the array indices, or when
-     *   `startIndex > endIndex`.
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the number's byte indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
      * */
     public fun pack(
-        target: Long,
+        source: Long,
         dest: ByteArray,
         destOffset: Int,
-        startIndex: Int,
-        endIndex: Int = Long.SIZE_BYTES,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int = Long.SIZE_BYTES,
     ): ByteArray {
         checkPackParameters(
-            sizeArray = dest.size,
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Long.SIZE_BYTES,
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = Long.SIZE_BYTES,
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
         )
-        return packUnsafe(target, dest, destOffset, startIndex, endIndex)
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
     }
 
     /**
-     * Packs all 2 bytes of [target] Short into [dest], starting at index [destOffset].
-     *
-     * **NOTE:** This function does not check input parameters for correctness before
-     * altering the [dest], but is faster than [pack] because of it.
+     * Packs bytes from [source] LongArray (max `size * 8` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
      *
      * e.g.
      *
-     *     val number = 2702.toShort()
-     *     val b = ByteArray(4) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100]
+     *     val source = LongArray(2) { i -> i + 9223372034707292160L }
+     *     val dest = ByteArray(source.size * Long.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [9223372034707292160, 9223372034707292161]
      *
-     *     Endian.Big.packUnsafe(number, b, 1)
-     *     println(b.toList())
-     *     // [-100, 10, -114, -100]
-     *     b.fill(-100)
+     *     Endian.Big.pack(source, dest, 0)
+     *     source.fill(0L)
      *
-     *     Endian.Little.packUnsafe(number, b, 2)
-     *     println(b.toList())
-     *     // [-100, -100, -114, 10]
+     *     Endian.Big.pack(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0, 127, -1, -1, -1, -128, 0, 0, 1]
+     *     // [9223372034707292160, 9223372034707292161]
+     *     dest.fill(-100)
      *
-     * @see [Big.bePackUnsafe]
-     * @see [Little.lePackUnsafe]
+     *     Endian.Little.pack(source, dest, 0)
+     *     source.fill(0L)
      *
-     * @param [target] The Short to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     *     Endian.Little.pack(source = dest, dest = source, 1, dest.size - 8, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127, 1, 0, 0, -128, -1, -1, -1, 127]
+     *     // [0, 9223372034707292161]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The LongArray to retrieve Longs from to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange, `0` by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange, `source.size` by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the array indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] when byte subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
      * */
-    public abstract fun packUnsafe(
-        target: Short,
+    public fun pack(
+        source: LongArray,
         dest: ByteArray,
         destOffset: Int,
-    ): ByteArray
+        sourceIndexStart: Int = 0,
+        sourceIndexEnd: Int = source.size,
+    ): ByteArray {
+        checkPackParameters(
+            destByteCapacity = dest.size,
+            destByteIndexStart = destOffset,
+            destByteIndexEnd = dest.size,
+            sourceByteAvailability = source.size * Long.SIZE_BYTES,
+            sourceByteIndexStart = sourceIndexStart * Long.SIZE_BYTES,
+            sourceByteIndexEnd = sourceIndexEnd * Long.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
 
     /**
-     * Packs all 4 bytes of [target] Int into [dest], starting at index [destOffset].
-     *
-     * **NOTE:** This function does not check input parameters for correctness before
-     * altering the [dest], but is faster than [pack] because of it.
+     * Packs Longs from [source] ByteArray (max `size / 8` Longs) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] LongArray, starting at [destOffset].
      *
      * e.g.
      *
-     *     val number = -77362181
-     *     val b = ByteArray(6) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100, -100, -100]
+     *     val source = LongArray(2) { i -> i + 9223372034707292160L }
+     *     val dest = ByteArray(source.size * Long.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [9223372034707292160, 9223372034707292161]
      *
-     *     Endian.Big.packUnsafe(number, b, 1)
-     *     println(b.toList())
-     *     // [-100, -5, 99, -117, -5, -100]
-     *     b.fill(-100)
+     *     Endian.Big.pack(source, dest, 0)
+     *     source.fill(0L)
      *
-     *     Endian.Little.packUnsafe(number, b, 2)
-     *     println(b.toList())
-     *     // [-100, -100, -5, -117, 99, -5]
+     *     Endian.Big.pack(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0, 127, -1, -1, -1, -128, 0, 0, 1]
+     *     // [9223372034707292160, 9223372034707292161]
+     *     dest.fill(-100)
      *
-     * @see [Big.bePackUnsafe]
-     * @see [Little.lePackUnsafe]
+     *     Endian.Little.pack(source, dest, 0)
+     *     source.fill(0L)
      *
-     * @param [target] The Int to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     *     Endian.Little.pack(source = dest, dest = source, 1, dest.size - 8, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127, 1, 0, 0, -128, -1, -1, -1, 127]
+     *     // [0, 9223372034707292161]
+     *
+     * @see [packUnsafe]
+     * @see [Big.bePackInto]
+     * @see [Little.lePackInto]
+     *
+     * @param [source] The ByteArray to retrieve bytes from to convert into Longs.
+     * @param [dest] The LongArray to pack Longs into.
      * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
+     * @throws [IndexOutOfBoundsException] or [IllegalArgumentException] when [sourceIndexStart] or
+     *   [sourceIndexEnd] are out of range of the array indices, or when `sourceIndexStart > sourceIndexEnd`.
+     * @throws [IndexOutOfBoundsException] if [sourceIndexStart] to [sourceIndexEnd] is not a factor of [Long.SIZE_BYTES]
+     * @throws [IndexOutOfBoundsException] when subrange will not fit into the [dest] array starting at
+     *   the specified [destOffset], or when that index is out of the [dest] array indices range.
      * */
-    public abstract fun packUnsafe(
-        target: Int,
-        dest: ByteArray,
+    public fun pack(
+        source: ByteArray,
+        dest: LongArray,
         destOffset: Int,
-    ): ByteArray
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int,
+    ): LongArray {
+        checkPackParameters(
+            destByteCapacity = dest.size * Long.SIZE_BYTES,
+            destByteIndexStart = destOffset * Long.SIZE_BYTES,
+            destByteIndexEnd = dest.size * Long.SIZE_BYTES,
+            sourceByteAvailability = source.size,
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+        )
+        checkSourceRemainder(
+            sourceByteIndexStart = sourceIndexStart,
+            sourceByteIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+        )
+        return packUnsafe(source, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+    }
 
     /**
-     * Packs all 8 bytes of [target] Long into [dest], starting at index [destOffset].
+     * Packs `2` bytes from [source] Short into [dest] ByteArray, starting at [destOffset].
      *
-     * **NOTE:** This function does not check input parameters for correctness before
-     * altering the [dest], but is faster than [pack] because of it.
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
      *
      * e.g.
      *
-     *     val number = 9223372034707292160L
-     *     val b = ByteArray(11) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
-     *
-     *     Endian.Big.packUnsafe(number, b, 1)
-     *     println(b.toList())
-     *     // [-100, 127, -1, -1, -1, -128, 0, 0, 0, -100, -100]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.packUnsafe(number, b, 3)
-     *     println(b.toList())
-     *     // [-100, -100, -100, 0, 0, 0, -128, -1, -1, -1, 127]
-     *
-     * @see [Big.bePackUnsafe]
-     * @see [Little.lePackUnsafe]
-     *
-     * @param [target] The Long to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
-     * @param [destOffset] The position in [dest] to start packing.
-     *
-     * @return The [dest] array
-     *
-     * @throws [IndexOutOfBoundsException] when subrange will not fit into the
-     *   [dest] array starting at the specified [destOffset], or when
-     *   that index is out of the [dest] array indices range.
-     * */
-    public abstract fun packUnsafe(
-        target: Long,
-        dest: ByteArray,
-        destOffset: Int,
-    ): ByteArray
-
-    /**
-     * Packs bytes of [target] Short from [startIndex] (inclusive) to [endIndex]
-     * (exclusive) into [dest], starting at [destOffset]. If [startIndex] is 0
-     * and [endIndex] is [Short.SIZE_BYTES], the more performant [pack] function
-     * will be utilized.
-     *
-     * **NOTE:** This function does not check input parameters for correctness before
-     * altering the [dest], but is faster than [pack] because of it.
-     *
-     * e.g.
-     *
-     *     val number = 2702.toShort()
-     *     val b = ByteArray(2) { -100 }
-     *     println(b.toList())
+     *     val source = 2702.toShort()
+     *     val dest = ByteArray(2) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100]
      *
-     *     Endian.Big.packUnsafe(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
      *     // [10, -114]
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Big.packUnsafe(number, b, 1, startIndex = 0, endIndex = 1)
-     *     println(b.toList())
-     *     // [-100, 10]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.packUnsafe(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
      *     // [-114, 10]
-     *     b.fill(-100)
      *
-     *     Endian.Little.packUnsafe(number, b, 1, startIndex = 1)
-     *     println(b.toList())
-     *     // [-100, 10]
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
      *
-     * @see [Big.bePackUnsafe]
-     * @see [Little.lePackUnsafe]
-     *
-     * @param [target] The Short to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     * @param [source] The Short to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
-     * @param [startIndex] The beginning (inclusive) of the [target] subrange to unpack.
-     * @param [endIndex] The end (exclusive) of the [target] subrange to unpack,
-     *   [Short.SIZE_BYTES] by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] if parameters are incorrect and an invalid
-     *   index in [dest] is accessed.
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] is accessed.
      * */
     public abstract fun packUnsafe(
-        target: Short,
+        source: Short,
         dest: ByteArray,
         destOffset: Int,
-        startIndex: Int,
-        endIndex: Int = Short.SIZE_BYTES,
     ): ByteArray
 
     /**
-     * Packs bytes of [target] Int from [startIndex] (inclusive) to [endIndex]
-     * (exclusive) into [dest], starting at [destOffset]. If [startIndex] is 0
-     * and [endIndex] is [Int.SIZE_BYTES], the more performant [pack] function
+     * Packs bytes from [source] Short (max `2` bytes) from [sourceIndexStart] (inclusive) to
+     * [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset]. If [sourceIndexStart]
+     * is `0` and [sourceIndexEnd] is [Short.SIZE_BYTES], the more performant [packUnsafe] function
      * will be utilized.
      *
-     * **NOTE:** This function does not check input parameters for correctness before
-     * altering the [dest], but is faster than [pack] because of it.
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
      *
      * e.g.
      *
-     *     val number = -77362181
-     *     val b = ByteArray(4) { -100 }
-     *     println(b.toList())
+     *     val source = 2702.toShort()
+     *     val dest = ByteArray(2) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [10, -114]
+     *     dest.fill(-100)
+     *
+     *     Endian.Big.packUnsafe(source, dest, 1, sourceIndexStart = 0, sourceIndexEnd = 1)
+     *     println(dest.toList())
+     *     // [-100, 10]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [-114, 10]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 1, sourceIndexStart = 1)
+     *     println(dest.toList())
+     *     // [-100, 10]
+     *
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The Short to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] byte subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] byte subrange, [Short.SIZE_BYTES] by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: Short,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int = Short.SIZE_BYTES,
+    ): ByteArray
+
+    /**
+     * Packs bytes from [source] ShortArray (max `size * 2` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = ShortArray(3) { i -> (i + 2701).toShort() }
+     *     val dest = ByteArray(source.size * Short.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100]
+     *     // [2701, 2702, 2703]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.packUnsafe(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [10, -115, 10, -114, 10, -113]
+     *     // [2701, 2702, 2703]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.packUnsafe(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-115, 10, -114, 10, -113, 10]
+     *     // [0, 2702, 2703]
+     *
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The ShortArray to retrieve Shorts from to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange, `0` by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange, `source.size` by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] or [source] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: ShortArray,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int = 0,
+        sourceIndexEnd: Int = source.size,
+    ): ByteArray
+
+    /**
+     * Packs Shorts from [source] ByteArray (max `size / 2` Shorts) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ShortArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = ShortArray(3) { i -> (i + 2701).toShort() }
+     *     val dest = ByteArray(source.size * Short.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100]
+     *     // [2701, 2702, 2703]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.packUnsafe(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [10, -115, 10, -114, 10, -113]
+     *     // [2701, 2702, 2703]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.packUnsafe(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-115, 10, -114, 10, -113, 10]
+     *     // [0, 2702, 2703]
+     *
+     * @see [longFrom]
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The ByteArray to retrieve bytes from to convert into Shorts.
+     * @param [dest] The ShortArray to pack Shorts into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] or [source] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: ByteArray,
+        dest: ShortArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int,
+    ): ShortArray
+
+    /**
+     * Packs `4` bytes from [source] Int into [dest] ByteArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = -77362181
+     *     val dest = ByteArray(4) { -100 }
+     *     println(dest.toList())
      *     // [-100, -100, -100, -100]
      *
-     *     Endian.Big.packUnsafe(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, 99, -117, -5]
-     *     b.fill(-100)
+     *     dest.fill(-100)
      *
-     *     Endian.Big.packUnsafe(number, b, 2, startIndex = 1, endIndex = 3)
-     *     println(b.toList())
-     *     // [-100, -100, 99, -117]
-     *     b.fill(-100)
-     *
-     *     Endian.Little.packUnsafe(number, b, 0, startIndex = 0)
-     *     println(b.toList())
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
      *     // [-5, -117, 99, -5]
-     *     b.fill(-100)
      *
-     *     Endian.Little.packUnsafe(number, b, 1, startIndex = 3)
-     *     println(b.toList())
-     *     // [-100, -5, -100, -100]
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
      *
-     * @see [Big.bePackUnsafe]
-     * @see [Little.lePackUnsafe]
-     *
-     * @param [target] The Int to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     * @param [source] The Int to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
-     * @param [startIndex] The beginning (inclusive) of the [target] subrange to unpack.
-     * @param [endIndex] The end (exclusive) of the [target] subrange to unpack,
-     *   [Int.SIZE_BYTES] by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] if parameters are incorrect and an invalid
-     *   index in [dest] is accessed.
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] is accessed.
      * */
     public abstract fun packUnsafe(
-        target: Int,
+        source: Int,
         dest: ByteArray,
         destOffset: Int,
-        startIndex: Int,
-        endIndex: Int = Int.SIZE_BYTES,
     ): ByteArray
 
     /**
-     * Packs bytes of [target] Long from [startIndex] (inclusive) to [endIndex]
-     * (exclusive) into [dest], starting at [destOffset]. If [startIndex] is 0
-     * and [endIndex] is [Long.SIZE_BYTES], the more performant [pack] function
+     * Packs bytes from [source] Int (max `4` bytes) from [sourceIndexStart] (inclusive) to
+     * [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset]. If [sourceIndexStart]
+     * is `0` and [sourceIndexEnd] is [Int.SIZE_BYTES], the more performant [packUnsafe] function
      * will be utilized.
      *
-     * **NOTE:** This function does not check input parameters for correctness before
-     * altering the [dest], but is faster than [pack] because of it.
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
      *
      * e.g.
      *
-     *     val number = 9223372034707292160L
-     *     val b = ByteArray(8) { -100 }
-     *     println(b.toList())
-     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *     val source = -77362181
+     *     val dest = ByteArray(4) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100, -100, -100]
      *
-     *     Endian.Big.packUnsafe(number, b, 0, startIndex = 0)
-     *     println(b.toList())
-     *     // [127, -1, -1, -1, -128, 0, 0, 0]
-     *     b.fill(-100)
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [-5, 99, -117, -5]
+     *     dest.fill(-100)
      *
-     *     Endian.Big.packUnsafe(number, b, 2, startIndex = 1, endIndex = 7)
-     *     println(b.toList())
-     *     // [-100, -100, -1, -1, -1, -128, 0, 0]
-     *     b.fill(-100)
+     *     Endian.Big.packUnsafe(source, dest, 2, sourceIndexStart = 1, sourceIndexEnd = 3)
+     *     println(dest.toList())
+     *     // [-100, -100, 99, -117]
+     *     dest.fill(-100)
      *
-     *     Endian.Little.packUnsafe(number, b, 0, startIndex = 0)
-     *     println(b.toList())
-     *     // [0, 0, 0, -128, -1, -1, -1, 127]
-     *     b.fill(-100)
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [-5, -117, 99, -5]
+     *     dest.fill(-100)
      *
-     *     Endian.Little.packUnsafe(number, b, 1, startIndex = 3)
-     *     println(b.toList())
-     *     // [-100, -128, -1, -1, -1, 127, -100, -100]
+     *     Endian.Little.packUnsafe(source, dest, 1, sourceIndexStart = 3)
+     *     println(dest.toList())
+     *     // [-100, -5, -100, -100]
      *
-     * @see [Big.bePackUnsafe]
-     * @see [Little.lePackUnsafe]
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
      *
-     * @param [target] The Long to unpack bytes from.
-     * @param [dest] The array to pack bytes into.
+     * @param [source] The Int to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
      * @param [destOffset] The position in [dest] to start packing.
-     * @param [startIndex] The beginning (inclusive) of the [target] subrange to unpack.
-     * @param [endIndex] The end (exclusive) of the [target] subrange to unpack,
-     *   [Long.SIZE_BYTES] by default.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] byte subrange, 0 by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] byte subrange, [Int.SIZE_BYTES] by default.
      *
      * @return The [dest] array
      *
-     * @throws [IndexOutOfBoundsException] if parameters are incorrect and an invalid
-     *   index in [dest] is accessed.
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] is accessed.
      * */
     public abstract fun packUnsafe(
-        target: Long,
+        source: Int,
         dest: ByteArray,
         destOffset: Int,
-        startIndex: Int,
-        endIndex: Int = Long.SIZE_BYTES,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int = Int.SIZE_BYTES,
     ): ByteArray
+
+    /**
+     * Packs bytes from [source] IntArray (max `size * 4` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = IntArray(2) { i -> i - 77362181 }
+     *     val dest = ByteArray(source.size * Int.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [-77362181, -77362180]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.packUnsafe(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, 99, -117, -5, -5, 99, -117, -4]
+     *     // [-77362181, -77362180]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.packUnsafe(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, -117, 99, -5, -4, -117, 99, -5]
+     *     // [0, -77362180]
+     *
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The IntArray to retrieve Ints from to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange, `0` by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange, `source.size` by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] or [source] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: IntArray,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int = 0,
+        sourceIndexEnd: Int = source.size,
+    ): ByteArray
+
+    /**
+     * Packs Ints from [source] ByteArray (max `size / 4` Ints) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] IntArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = IntArray(2) { i -> i - 77362181 }
+     *     val dest = ByteArray(source.size * Int.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [-77362181, -77362180]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Big.packUnsafe(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, 99, -117, -5, -5, 99, -117, -4]
+     *     // [-77362181, -77362180]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     source.fill(0)
+     *
+     *     Endian.Little.packUnsafe(source = dest, dest = source, 1, dest.size - 4, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-5, -117, 99, -5, -4, -117, 99, -5]
+     *     // [0, -77362180]
+     *
+     * @see [longFrom]
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The ByteArray to retrieve bytes from to convert into Ints.
+     * @param [dest] The IntArray to pack Ints into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] or [source] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: ByteArray,
+        dest: IntArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int,
+    ): IntArray
+
+    /**
+     * Packs `8` bytes from [source] Long into [dest] ByteArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = 9223372034707292160L
+     *     val dest = ByteArray(8) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127]
+     *
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The Long to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: Long,
+        dest: ByteArray,
+        destOffset: Int,
+    ): ByteArray
+
+    /**
+     * Packs bytes from [source] Long (max `8` bytes) from [sourceIndexStart] (inclusive) to
+     * [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset]. If [sourceIndexStart]
+     * is `0` and [sourceIndexEnd] is [Long.SIZE_BYTES], the more performant [packUnsafe] function
+     * will be utilized.
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = 9223372034707292160L
+     *     val dest = ByteArray(8) { -100 }
+     *     println(dest.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0]
+     *     dest.fill(-100)
+     *
+     *     Endian.Big.packUnsafe(source, dest, 2, sourceIndexStart = 1, sourceIndexEnd = 7)
+     *     println(dest.toList())
+     *     // [-100, -100, -1, -1, -1, -128, 0, 0]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     println(dest.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 1, sourceIndexStart = 3)
+     *     println(dest.toList())
+     *     // [-100, -128, -1, -1, -1, 127, -100, -100]
+     *
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The Long to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] byte subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] byte subrange, [Long.SIZE_BYTES] by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: Long,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int = Long.SIZE_BYTES,
+    ): ByteArray
+
+    /**
+     * Packs bytes from [source] LongArray (max `size * 8` bytes) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] ByteArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = LongArray(2) { i -> i + 9223372034707292160L }
+     *     val dest = ByteArray(source.size * Long.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [9223372034707292160, 9223372034707292161]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     source.fill(0L)
+     *
+     *     Endian.Big.packUnsafe(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0, 127, -1, -1, -1, -128, 0, 0, 1]
+     *     // [9223372034707292160, 9223372034707292161]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     source.fill(0L)
+     *
+     *     Endian.Little.packUnsafe(source = dest, dest = source, 1, dest.size - 8, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127, 1, 0, 0, -128, -1, -1, -1, 127]
+     *     // [0, 9223372034707292161]
+     *
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The LongArray to retrieve Longs from to convert into bytes.
+     * @param [dest] The ByteArray to pack bytes into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange, `0` by default.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange, `source.size` by default.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] or [source] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: LongArray,
+        dest: ByteArray,
+        destOffset: Int,
+        sourceIndexStart: Int = 0,
+        sourceIndexEnd: Int = source.size,
+    ): ByteArray
+
+    /**
+     * Packs Longs from [source] ByteArray (max `size / 8` Longs) from [sourceIndexStart] (inclusive)
+     * to [sourceIndexEnd] (exclusive) into [dest] LongArray, starting at [destOffset].
+     *
+     * **NOTE:** This function does not check input parameters for correctness before altering
+     * the [dest] array, but is faster than [pack] because of it.
+     *
+     * e.g.
+     *
+     *     val source = LongArray(2) { i -> i + 9223372034707292160L }
+     *     val dest = ByteArray(source.size * Long.SIZE_BYTES) { -100 }
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100]
+     *     // [9223372034707292160, 9223372034707292161]
+     *
+     *     Endian.Big.packUnsafe(source, dest, 0)
+     *     source.fill(0L)
+     *
+     *     Endian.Big.packUnsafe(source = dest, dest = source, 0, 0, sourceIndexEnd = dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [127, -1, -1, -1, -128, 0, 0, 0, 127, -1, -1, -1, -128, 0, 0, 1]
+     *     // [9223372034707292160, 9223372034707292161]
+     *     dest.fill(-100)
+     *
+     *     Endian.Little.packUnsafe(source, dest, 0)
+     *     source.fill(0L)
+     *
+     *     Endian.Little.packUnsafe(source = dest, dest = source, 1, dest.size - 8, dest.size)
+     *     println(dest.toList())
+     *     println(source.toList())
+     *     // [0, 0, 0, -128, -1, -1, -1, 127, 1, 0, 0, -128, -1, -1, -1, 127]
+     *     // [0, 9223372034707292161]
+     *
+     * @see [longFrom]
+     * @see [Big.bePackIntoUnsafe]
+     * @see [Little.lePackIntoUnsafe]
+     *
+     * @param [source] The ByteArray to retrieve bytes from to convert into Longs.
+     * @param [dest] The LongArray to pack Longs into.
+     * @param [destOffset] The position in [dest] to start packing.
+     * @param [sourceIndexStart] The beginning (inclusive) of the [source] subrange.
+     * @param [sourceIndexEnd] The end (exclusive) of the [source] subrange.
+     *
+     * @return The [dest] array
+     *
+     * @throws [IndexOutOfBoundsException] if an invalid index in [dest] or [source] is accessed.
+     * */
+    public abstract fun packUnsafe(
+        source: ByteArray,
+        dest: LongArray,
+        destOffset: Int,
+        sourceIndexStart: Int,
+        sourceIndexEnd: Int,
+    ): LongArray
 
     /**
      * Implementation of the [Endian] abstraction which performs all operations using
@@ -944,99 +1679,207 @@ public sealed class Endian private constructor() {
 
         /** Syntactic Sugar. See [Endian.Big.pack] */
         @JvmStatic
-        public inline fun ByteArray.bePack(
-            target: Short,
-            offset: Int,
-        ): ByteArray = Big.pack(target, this, offset)
+        public inline fun Short.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Big.pack(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Big.pack] */
         @JvmStatic
-        public inline fun ByteArray.bePack(
-            target: Int,
-            offset: Int,
-        ): ByteArray = Big.pack(target, this, offset)
+        public inline fun Short.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Short.SIZE_BYTES,
+        ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.pack] */
         @JvmStatic
-        public inline fun ByteArray.bePack(
-            target: Long,
-            offset: Int,
-        ): ByteArray = Big.pack(target, this, offset)
+        public inline fun ShortArray.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.pack] */
         @JvmStatic
-        public inline fun ByteArray.bePack(
-            target: Short,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Short.SIZE_BYTES,
-        ): ByteArray = Big.pack(target, this, offset, startIndex, endIndex)
+        public inline fun ByteArray.bePackInto(
+            dest: ShortArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): ShortArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.pack] */
         @JvmStatic
-        public inline fun ByteArray.bePack(
-            target: Int,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Int.SIZE_BYTES,
-        ): ByteArray = Big.pack(target, this, offset, startIndex, endIndex)
+        public inline fun Int.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Big.pack(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Big.pack] */
         @JvmStatic
-        public inline fun ByteArray.bePack(
-            target: Long,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Long.SIZE_BYTES,
-        ): ByteArray = Big.pack(target, this, offset, startIndex, endIndex)
+        public inline fun Int.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Int.SIZE_BYTES,
+        ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.pack] */
+        @JvmStatic
+        public inline fun IntArray.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.pack] */
+        @JvmStatic
+        public inline fun ByteArray.bePackInto(
+            dest: IntArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): IntArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.pack] */
+        @JvmStatic
+        public inline fun Long.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Big.pack(this, dest, destOffset)
+
+        /** Syntactic Sugar. See [Endian.Big.pack] */
+        @JvmStatic
+        public inline fun Long.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Long.SIZE_BYTES,
+        ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.pack] */
+        @JvmStatic
+        public inline fun LongArray.bePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.pack] */
+        @JvmStatic
+        public inline fun ByteArray.bePackInto(
+            dest: LongArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): LongArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.bePackUnsafe(
-            target: Short,
-            offset: Int,
-        ): ByteArray = Big.packUnsafe(target, this, offset)
+        public inline fun Short.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.bePackUnsafe(
-            target: Int,
-            offset: Int,
-        ): ByteArray = Big.packUnsafe(target, this, offset)
+        public inline fun Short.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Short.SIZE_BYTES,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.bePackUnsafe(
-            target: Long,
-            offset: Int,
-        ): ByteArray = Big.packUnsafe(target, this, offset)
+        public inline fun ShortArray.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.bePackUnsafe(
-            target: Short,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Short.SIZE_BYTES,
-        ): ByteArray = Big.packUnsafe(target, this, offset, startIndex, endIndex)
+        public inline fun ByteArray.bePackIntoUnsafe(
+            dest: ShortArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): ShortArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.bePackUnsafe(
-            target: Int,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Int.SIZE_BYTES,
-        ): ByteArray = Big.packUnsafe(target, this, offset, startIndex, endIndex)
+        public inline fun Int.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.bePackUnsafe(
-            target: Long,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Long.SIZE_BYTES,
-        ): ByteArray = Big.packUnsafe(target, this, offset, startIndex, endIndex)
+        public inline fun Int.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Int.SIZE_BYTES,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        @JvmStatic
+        public inline fun IntArray.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        @JvmStatic
+        public inline fun ByteArray.bePackIntoUnsafe(
+            dest: IntArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): IntArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        @JvmStatic
+        public inline fun Long.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset)
+
+        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        @JvmStatic
+        public inline fun Long.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Long.SIZE_BYTES,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        @JvmStatic
+        public inline fun LongArray.bePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        @JvmStatic
+        public inline fun ByteArray.bePackIntoUnsafe(
+            dest: LongArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): LongArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         public override fun shortOf(
             b0: Byte,
@@ -1091,66 +1934,170 @@ public sealed class Endian private constructor() {
         )
 
         public override fun packUnsafe(
-            target: Short,
+            source: Short,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = dest.packBEShort(target, destOffset)
+        ): ByteArray = dest.packBEShort(source, destOffset)
 
         public override fun packUnsafe(
-            target: Int,
+            source: Short,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = dest.packBEInt(target, destOffset)
-
-        public override fun packUnsafe(
-            target: Long,
-            dest: ByteArray,
-            destOffset: Int,
-        ): ByteArray = dest.packBELong(target, destOffset)
-
-        public override fun packUnsafe(
-            target: Short,
-            dest: ByteArray,
-            destOffset: Int,
-            startIndex: Int,
-            endIndex: Int, // = Short.SIZE_BYTES
-        ): ByteArray = dest.packAllElsePartial(
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Short.SIZE_BYTES,
-            packAll = { packBEShort(target, destOffset) },
-            ushr = { bits -> (target.toInt() ushr (8 - bits)).toByte() },
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int, // = Short.SIZE_BYTES
+        ): ByteArray = dest.packNumberAllElsePartial(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+            packNumber = { packBEShort(source, destOffset) },
+            ushr = { bits -> (source.toInt() ushr (8 - bits)).toByte() },
         )
 
         public override fun packUnsafe(
-            target: Int,
+            source: ShortArray,
             dest: ByteArray,
             destOffset: Int,
-            startIndex: Int,
-            endIndex: Int, // = Int.SIZE_BYTES
-        ): ByteArray = dest.packAllElsePartial(
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Int.SIZE_BYTES,
-            packAll = { packBEInt(target, destOffset) },
-            ushr = { bits -> (target ushr (24 - bits)).toByte() },
+            sourceIndexStart: Int, // = 0
+            sourceIndexEnd: Int, // = source.size
+        ): ByteArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+            packNumber = { sourcePos, destPos -> packBEShort(source[sourcePos], destPos) }
         )
 
         public override fun packUnsafe(
-            target: Long,
+            source: ByteArray,
+            dest: ShortArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): ShortArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+            unpackNumber = { sourcePos, destPos ->
+                dest[destPos] = B0(source[sourcePos]).toBEShort(
+                    source[sourcePos + 1],
+                )
+            },
+        )
+
+        public override fun packUnsafe(
+            source: Int,
             dest: ByteArray,
             destOffset: Int,
-            startIndex: Int,
-            endIndex: Int, // = Long.SIZE_BYTES
-        ): ByteArray = dest.packAllElsePartial(
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Long.SIZE_BYTES,
-            packAll = { packBELong(target, destOffset) },
-            ushr = { bits -> (target ushr (56 - bits)).toByte() },
+        ): ByteArray = dest.packBEInt(source, destOffset)
+
+        public override fun packUnsafe(
+            source: Int,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int, // = Int.SIZE_BYTES
+        ): ByteArray = dest.packNumberAllElsePartial(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+            packNumber = { packBEInt(source, destOffset) },
+            ushr = { bits -> (source ushr (24 - bits)).toByte() },
+        )
+
+        public override fun packUnsafe(
+            source: IntArray,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int, // = 0
+            sourceIndexEnd: Int, // = source.size
+        ): ByteArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+            packNumber = { sourcePos, destPos -> packBEInt(source[sourcePos], destPos) }
+        )
+
+        public override fun packUnsafe(
+            source: ByteArray,
+            dest: IntArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): IntArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+            unpackNumber = { sourcePos, destPos ->
+                dest[destPos] = B0(source[sourcePos]).toBEInt(
+                    source[sourcePos + 1],
+                    source[sourcePos + 2],
+                    source[sourcePos + 3],
+                )
+            },
+        )
+
+        public override fun packUnsafe(
+            source: Long,
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = dest.packBELong(source, destOffset)
+
+        public override fun packUnsafe(
+            source: Long,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int, // = Long.SIZE_BYTES
+        ): ByteArray = dest.packNumberAllElsePartial(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+            packNumber = { packBELong(source, destOffset) },
+            ushr = { bits -> (source ushr (56 - bits)).toByte() },
+        )
+
+        public override fun packUnsafe(
+            source: LongArray,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int, // = 0
+            sourceIndexEnd: Int, // = source.size
+        ): ByteArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+            packNumber = { sourcePos, destPos -> packBELong(source[sourcePos], destPos) }
+        )
+
+        public override fun packUnsafe(
+            source: ByteArray,
+            dest: LongArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): LongArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+            unpackNumber = { sourcePos, destPos ->
+                dest[destPos] = B0(source[sourcePos]).toBELong(
+                    source[sourcePos + 1],
+                    source[sourcePos + 2],
+                    source[sourcePos + 3],
+                    source[sourcePos + 4],
+                    source[sourcePos + 5],
+                    source[sourcePos + 6],
+                    source[sourcePos + 7],
+                )
+            },
         )
     }
 
@@ -1182,99 +2129,207 @@ public sealed class Endian private constructor() {
 
         /** Syntactic Sugar. See [Endian.Little.pack] */
         @JvmStatic
-        public inline fun ByteArray.lePack(
-            target: Short,
-            offset: Int,
-        ): ByteArray = Little.pack(target, this, offset)
+        public inline fun Short.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Little.pack(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Little.pack] */
         @JvmStatic
-        public inline fun ByteArray.lePack(
-            target: Int,
-            offset: Int,
-        ): ByteArray = Little.pack(target, this, offset)
+        public inline fun Short.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Short.SIZE_BYTES,
+        ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.pack] */
         @JvmStatic
-        public inline fun ByteArray.lePack(
-            target: Long,
-            offset: Int,
-        ): ByteArray = Little.pack(target, this, offset)
+        public inline fun ShortArray.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.pack] */
         @JvmStatic
-        public inline fun ByteArray.lePack(
-            target: Short,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Short.SIZE_BYTES,
-        ): ByteArray = Little.pack(target, this, offset, startIndex, endIndex)
+        public inline fun ByteArray.lePackInto(
+            dest: ShortArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): ShortArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.pack] */
         @JvmStatic
-        public inline fun ByteArray.lePack(
-            target: Int,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Int.SIZE_BYTES,
-        ): ByteArray = Little.pack(target, this, offset, startIndex, endIndex)
+        public inline fun Int.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Little.pack(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Little.pack] */
         @JvmStatic
-        public inline fun ByteArray.lePack(
-            target: Long,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Long.SIZE_BYTES,
-        ): ByteArray = Little.pack(target, this, offset, startIndex, endIndex)
+        public inline fun Int.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Int.SIZE_BYTES,
+        ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.pack] */
+        @JvmStatic
+        public inline fun IntArray.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.pack] */
+        @JvmStatic
+        public inline fun ByteArray.lePackInto(
+            dest: IntArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): IntArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.pack] */
+        @JvmStatic
+        public inline fun Long.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Little.pack(this, dest, destOffset)
+
+        /** Syntactic Sugar. See [Endian.Little.pack] */
+        @JvmStatic
+        public inline fun Long.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Long.SIZE_BYTES,
+        ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.pack] */
+        @JvmStatic
+        public inline fun LongArray.lePackInto(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.pack] */
+        @JvmStatic
+        public inline fun ByteArray.lePackInto(
+            dest: LongArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): LongArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.lePackUnsafe(
-            target: Short,
-            offset: Int,
-        ): ByteArray = Little.packUnsafe(target, this, offset)
+        public inline fun Short.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.lePackUnsafe(
-            target: Int,
-            offset: Int,
-        ): ByteArray = Little.packUnsafe(target, this, offset)
+        public inline fun Short.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Short.SIZE_BYTES,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.lePackUnsafe(
-            target: Long,
-            offset: Int,
-        ): ByteArray = Little.packUnsafe(target, this, offset)
+        public inline fun ShortArray.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.lePackUnsafe(
-            target: Short,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Short.SIZE_BYTES,
-        ): ByteArray = Little.packUnsafe(target, this, offset, startIndex, endIndex)
+        public inline fun ByteArray.lePackIntoUnsafe(
+            dest: ShortArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): ShortArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.lePackUnsafe(
-            target: Int,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Int.SIZE_BYTES,
-        ): ByteArray = Little.packUnsafe(target, this, offset, startIndex, endIndex)
+        public inline fun Int.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset)
 
         /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
         @JvmStatic
-        public inline fun ByteArray.lePackUnsafe(
-            target: Long,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int = Long.SIZE_BYTES,
-        ): ByteArray = Little.packUnsafe(target, this, offset, startIndex, endIndex)
+        public inline fun Int.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Int.SIZE_BYTES,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        @JvmStatic
+        public inline fun IntArray.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        @JvmStatic
+        public inline fun ByteArray.lePackIntoUnsafe(
+            dest: IntArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): IntArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        @JvmStatic
+        public inline fun Long.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset)
+
+        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        @JvmStatic
+        public inline fun Long.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int = Long.SIZE_BYTES,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        @JvmStatic
+        public inline fun LongArray.lePackIntoUnsafe(
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int = 0,
+            sourceIndexEnd: Int = this.size,
+        ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
+
+        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        @JvmStatic
+        public inline fun ByteArray.lePackIntoUnsafe(
+            dest: LongArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): LongArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
         public override fun shortOf(
             b0: Byte,
@@ -1329,66 +2384,170 @@ public sealed class Endian private constructor() {
         )
 
         public override fun packUnsafe(
-            target: Short,
+            source: Short,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = dest.packLEShort(target, destOffset)
+        ): ByteArray = dest.packLEShort(source, destOffset)
 
         public override fun packUnsafe(
-            target: Int,
+            source: Short,
             dest: ByteArray,
             destOffset: Int,
-        ): ByteArray = dest.packLEInt(target, destOffset)
-
-        public override fun packUnsafe(
-            target: Long,
-            dest: ByteArray,
-            destOffset: Int,
-        ): ByteArray = dest.packLELong(target, destOffset)
-
-        public override fun packUnsafe(
-            target: Short,
-            dest: ByteArray,
-            destOffset: Int,
-            startIndex: Int,
-            endIndex: Int, // = Short.SIZE_BYTES
-        ): ByteArray = dest.packAllElsePartial(
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Short.SIZE_BYTES,
-            packAll = { packLEShort(target, destOffset) },
-            ushr = { bits -> (target.toInt() ushr bits).toByte() },
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int, // = Short.SIZE_BYTES
+        ): ByteArray = dest.packNumberAllElsePartial(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+            packNumber = { packLEShort(source, destOffset) },
+            ushr = { bits -> (source.toInt() ushr bits).toByte() },
         )
 
         public override fun packUnsafe(
-            target: Int,
+            source: ShortArray,
             dest: ByteArray,
             destOffset: Int,
-            startIndex: Int,
-            endIndex: Int, // = Int.SIZE_BYTES
-        ): ByteArray = dest.packAllElsePartial(
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Int.SIZE_BYTES,
-            packAll = { packLEInt(target, destOffset) },
-            ushr = { bits -> (target ushr bits).toByte() },
+            sourceIndexStart: Int, // = 0
+            sourceIndexEnd: Int, // = source.size
+        ): ByteArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+            packNumber = { sourcePos, destPos -> packLEShort(source[sourcePos], destPos) }
         )
 
         public override fun packUnsafe(
-            target: Long,
+            source: ByteArray,
+            dest: ShortArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): ShortArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Short.SIZE_BYTES,
+            unpackNumber = { sourcePos, destPos ->
+                dest[destPos] = B0(source[sourcePos]).toLEShort(
+                    source[sourcePos + 1],
+                )
+            },
+        )
+
+        public override fun packUnsafe(
+            source: Int,
             dest: ByteArray,
             destOffset: Int,
-            startIndex: Int,
-            endIndex: Int, // = Long.SIZE_BYTES
-        ): ByteArray = dest.packAllElsePartial(
-            offset = destOffset,
-            startIndex = startIndex,
-            endIndex = endIndex,
-            sizeBytes = Long.SIZE_BYTES,
-            packAll = { packLELong(target, destOffset) },
-            ushr = { bits -> (target ushr bits).toByte() },
+        ): ByteArray = dest.packLEInt(source, destOffset)
+
+        public override fun packUnsafe(
+            source: Int,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int, // = Int.SIZE_BYTES
+        ): ByteArray = dest.packNumberAllElsePartial(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+            packNumber = { packLEInt(source, destOffset) },
+            ushr = { bits -> (source ushr bits).toByte() },
+        )
+
+        public override fun packUnsafe(
+            source: IntArray,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int, // = 0
+            sourceIndexEnd: Int, // = source.size
+        ): ByteArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+            packNumber = { sourcePos, destPos -> packLEInt(source[sourcePos], destPos) }
+        )
+
+        public override fun packUnsafe(
+            source: ByteArray,
+            dest: IntArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): IntArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Int.SIZE_BYTES,
+            unpackNumber = { sourcePos, destPos ->
+                dest[destPos] = B0(source[sourcePos]).toLEInt(
+                    source[sourcePos + 1],
+                    source[sourcePos + 2],
+                    source[sourcePos + 3],
+                )
+            },
+        )
+
+        public override fun packUnsafe(
+            source: Long,
+            dest: ByteArray,
+            destOffset: Int,
+        ): ByteArray = dest.packLELong(source, destOffset)
+
+        public override fun packUnsafe(
+            source: Long,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int, // = Long.SIZE_BYTES
+        ): ByteArray = dest.packNumberAllElsePartial(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+            packNumber = { packLELong(source, destOffset) },
+            ushr = { bits -> (source ushr bits).toByte() },
+        )
+
+        public override fun packUnsafe(
+            source: LongArray,
+            dest: ByteArray,
+            destOffset: Int,
+            sourceIndexStart: Int, // = 0
+            sourceIndexEnd: Int, // = source.size
+        ): ByteArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+            packNumber = { sourcePos, destPos -> packLELong(source[sourcePos], destPos) }
+        )
+
+        public override fun packUnsafe(
+            source: ByteArray,
+            dest: LongArray,
+            destOffset: Int,
+            sourceIndexStart: Int,
+            sourceIndexEnd: Int,
+        ): LongArray = dest.packArray(
+            destOffset = destOffset,
+            sourceIndexStart = sourceIndexStart,
+            sourceIndexEnd = sourceIndexEnd,
+            numberSizeBytes = Long.SIZE_BYTES,
+            unpackNumber = { sourcePos, destPos ->
+                dest[destPos] = B0(source[sourcePos]).toLELong(
+                    source[sourcePos + 1],
+                    source[sourcePos + 2],
+                    source[sourcePos + 3],
+                    source[sourcePos + 4],
+                    source[sourcePos + 5],
+                    source[sourcePos + 6],
+                    source[sourcePos + 7],
+                )
+            },
         )
     }
 
@@ -1402,23 +2561,38 @@ public sealed class Endian private constructor() {
 
         @JvmStatic
         private fun checkPackParameters(
-            sizeArray: Int,
-            offset: Int,
-            startIndex: Int,
-            endIndex: Int,
-            sizeBytes: Int,
+            destByteCapacity: Int,
+            destByteIndexStart: Int,
+            destByteIndexEnd: Int,
+            sourceByteAvailability: Int,
+            sourceByteIndexStart: Int,
+            sourceByteIndexEnd: Int,
         ) {
-            if (startIndex < 0 || endIndex > sizeBytes) {
-                throw IndexOutOfBoundsException("startIndex[$startIndex], endIndex[$endIndex], sizeBytes[$sizeBytes]")
+            if (sourceByteIndexStart < 0 || sourceByteIndexEnd > sourceByteAvailability) {
+                throw IndexOutOfBoundsException("sourceByteIndexStart[$sourceByteIndexStart], sourceByteIndexEnd[$sourceByteIndexEnd], sourceByteAvailability[$sourceByteAvailability]")
             }
-            if (startIndex > endIndex) {
-                throw IllegalArgumentException("startIndex[$startIndex] > endIndex[$endIndex]")
+            if (destByteIndexStart < 0 || destByteIndexEnd > destByteCapacity) {
+                throw IndexOutOfBoundsException("destByteIndexStart[$destByteIndexStart], destByteIndexEnd[$destByteIndexEnd], destByteCapacity[$destByteCapacity]")
             }
-            if (offset < 0 || offset > sizeArray) {
-                throw IndexOutOfBoundsException("offset[$offset], sizeArray[$sizeArray]")
+            if (sourceByteIndexStart > sourceByteIndexEnd) {
+                throw IllegalArgumentException("sourceByteIndexStart[$sourceByteIndexStart] > sourceByteIndexEnd[$sourceByteIndexEnd]")
             }
-            if (sizeArray - offset < endIndex - startIndex) {
-                throw IndexOutOfBoundsException("Not enough room. sizeArray[$sizeArray], offset[$offset], startIndex[$startIndex], endIndex[$endIndex], sizeBytes[$sizeBytes]")
+            if (destByteIndexStart > destByteIndexEnd) {
+                throw IllegalArgumentException("destByteIndexStart[$destByteIndexStart] > destByteIndexEnd[$destByteIndexEnd]")
+            }
+            if (destByteIndexEnd - destByteIndexStart < sourceByteIndexEnd - sourceByteIndexStart) {
+                throw IndexOutOfBoundsException("Not enough room in destination. destByteIndexStart[$destByteIndexStart], destByteIndexEnd[$destByteIndexEnd], sourceByteIndexStart[$sourceByteIndexStart], sourceByteIndexEnd[$sourceByteIndexEnd]")
+            }
+        }
+
+        @JvmStatic
+        private fun checkSourceRemainder(
+            sourceByteIndexStart: Int,
+            sourceByteIndexEnd: Int,
+            numberSizeBytes: Int,
+        ) {
+            if ((sourceByteIndexEnd - sourceByteIndexStart) % numberSizeBytes != 0) {
+                throw IndexOutOfBoundsException("Invalid remainder. Source indices must be a factor of $numberSizeBytes")
             }
         }
     }

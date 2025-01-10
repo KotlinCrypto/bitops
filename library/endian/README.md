@@ -10,19 +10,19 @@ arrayOf(Endian.Big, Endian.Little).forEach { endian ->
     println(endian)
 
     // Short
-    endian.pack(target = 3883.toShort(), dest = b, destOffset = 0)
+    endian.pack(source = 3883.toShort(), dest = b, destOffset = 0)
     println(b.toList())
     println(endian.shortFrom(source = b, offset = 0))
     // Alternatively: endian.shortOf(b[0], b[1])
 
     // Int
-    endian.pack(target = 3883541, dest = b, destOffset = 0)
+    endian.pack(source = 3883541, dest = b, destOffset = 0)
     println(b.toList())
     println(endian.intFrom(source = b, offset = 0))
     // Alternatively: endian.intOf(b[0], b[1], b[2], b[3])
 
     // Long
-    endian.pack(target = 1948571948571333L, dest = b, destOffset = 0)
+    endian.pack(source = 1948571948571333L, dest = b, destOffset = 0)
     println(b.toList())
     println(endian.longFrom(source = b, offset = 0))
     // Alternatively: endian.longOf(b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7])

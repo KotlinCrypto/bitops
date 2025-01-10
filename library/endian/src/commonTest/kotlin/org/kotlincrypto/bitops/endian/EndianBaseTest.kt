@@ -177,18 +177,18 @@ abstract class EndianBaseTest(private val endian: Endian) {
         assertNotEquals(expectedNot, expected[1])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 1, startIndex = 1)
+        endian.pack(number, b, 1, sourceIndexStart = 1)
         assertEquals(expectedNot, b[0])
         assertEquals(expected[1], b[1])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 0, startIndex = 1)
+        endian.pack(number, b, 0, sourceIndexStart = 1)
         assertEquals(expected[1], b[0])
         assertEquals(expectedNot, b[1])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 1, startIndex = 0, endIndex = 1)
-        assertEquals(expectedNot,       b[0])
+        endian.pack(number, b, 1, sourceIndexStart = 0, sourceIndexEnd = 1)
+        assertEquals(expectedNot, b[0])
         assertEquals(expected[0], b[1])
 
         assertFailsWith<IndexOutOfBoundsException> {
@@ -198,16 +198,16 @@ abstract class EndianBaseTest(private val endian: Endian) {
             endian.pack(number, b, destOffset = 1)
         }
         assertFailsWith<IndexOutOfBoundsException> {
-            endian.pack(number, b, destOffset = 0, startIndex = -1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = -1)
         }
         assertFailsWith<IndexOutOfBoundsException> {
-            endian.pack(number, b, destOffset = 0, startIndex = 0, endIndex = b.size + 1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = b.size + 1)
         }
         assertFailsWith<IllegalArgumentException> {
-            endian.pack(number, b, destOffset = 0, startIndex = b.size + 1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = b.size + 1)
         }
         assertFailsWith<IllegalArgumentException> {
-            endian.pack(number, b, destOffset = 0, startIndex = 0, endIndex = -1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = -1)
         }
     }
 
@@ -229,21 +229,21 @@ abstract class EndianBaseTest(private val endian: Endian) {
         assertNotEquals(expectedNot, expected[3])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 1, startIndex = 1)
+        endian.pack(number, b, 1, sourceIndexStart = 1)
         assertEquals(expectedNot, b[0])
         assertEquals(expected[1], b[1])
         assertEquals(expected[2], b[2])
         assertEquals(expected[3], b[3])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 0, startIndex = 1)
+        endian.pack(number, b, 0, sourceIndexStart = 1)
         assertEquals(expected[1], b[0])
         assertEquals(expected[2], b[1])
         assertEquals(expected[3], b[2])
         assertEquals(expectedNot, b[3])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 1, startIndex = 0, endIndex = 2)
+        endian.pack(number, b, 1, sourceIndexStart = 0, sourceIndexEnd = 2)
         assertEquals(expectedNot, b[0])
         assertEquals(expected[0], b[1])
         assertEquals(expected[1], b[2])
@@ -256,16 +256,16 @@ abstract class EndianBaseTest(private val endian: Endian) {
             endian.pack(number, b, destOffset = 1)
         }
         assertFailsWith<IndexOutOfBoundsException> {
-            endian.pack(number, b, destOffset = 0, startIndex = -1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = -1)
         }
         assertFailsWith<IndexOutOfBoundsException> {
-            endian.pack(number, b, destOffset = 0, startIndex = 0, endIndex = b.size + 1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = b.size + 1)
         }
         assertFailsWith<IllegalArgumentException> {
-            endian.pack(number, b, destOffset = 0, startIndex = b.size + 1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = b.size + 1)
         }
         assertFailsWith<IllegalArgumentException> {
-            endian.pack(number, b, destOffset = 0, startIndex = 0, endIndex = -1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = -1)
         }
     }
 
@@ -291,7 +291,7 @@ abstract class EndianBaseTest(private val endian: Endian) {
         assertNotEquals(expectedNot, expected[7])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 1, startIndex = 1)
+        endian.pack(number, b, 1, sourceIndexStart = 1)
         assertEquals(expectedNot, b[0])
         assertEquals(expected[1], b[1])
         assertEquals(expected[2], b[2])
@@ -302,7 +302,7 @@ abstract class EndianBaseTest(private val endian: Endian) {
         assertEquals(expected[7], b[7])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 0, startIndex = 1)
+        endian.pack(number, b, 0, sourceIndexStart = 1)
         assertEquals(expected[1], b[0])
         assertEquals(expected[2], b[1])
         assertEquals(expected[3], b[2])
@@ -313,7 +313,7 @@ abstract class EndianBaseTest(private val endian: Endian) {
         assertEquals(expectedNot, b[7])
         b.fill(expectedNot)
 
-        endian.pack(number, b, 1, startIndex = 0, endIndex = 2)
+        endian.pack(number, b, 1, sourceIndexStart = 0, sourceIndexEnd = 2)
         assertEquals(expectedNot, b[0])
         assertEquals(expected[0], b[1])
         assertEquals(expected[1], b[2])
@@ -330,16 +330,64 @@ abstract class EndianBaseTest(private val endian: Endian) {
             endian.pack(number, b, destOffset = 1)
         }
         assertFailsWith<IndexOutOfBoundsException> {
-            endian.pack(number, b, destOffset = 0, startIndex = -1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = -1)
         }
         assertFailsWith<IndexOutOfBoundsException> {
-            endian.pack(number, b, destOffset = 0, startIndex = 0, endIndex = b.size + 1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = b.size + 1)
         }
         assertFailsWith<IllegalArgumentException> {
-            endian.pack(number, b, destOffset = 0, startIndex = b.size + 1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = b.size + 1)
         }
         assertFailsWith<IllegalArgumentException> {
-            endian.pack(number, b, destOffset = 0, startIndex = 0, endIndex = -1)
+            endian.pack(number, b, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = -1)
         }
+    }
+
+    @Test
+    fun givenEndian_whenPackShortArray_thenIsAsExpected() {
+        val expectedN = ShortArray(SHORTS.size)
+        val expectedB = ByteArray(SHORTS.first().second.size * SHORTS.size)
+        SHORTS.forEachIndexed { index, value ->
+            val bytes = value.expectedBytes()
+            expectedN[index] = value.first
+            bytes.copyInto(expectedB, bytes.size * index)
+        }
+
+        assertContentEquals(expectedB, endian.pack(source = expectedN, dest = ByteArray(expectedB.size), destOffset = 0))
+        assertContentEquals(expectedN, endian.pack(source = expectedB, dest = ShortArray(expectedN.size), destOffset = 0, 0, expectedB.size))
+
+        // TODO assertFailsWith
+    }
+
+    @Test
+    fun givenEndian_whenPackIntArray_thenIsAsExpected() {
+        val expectedN = IntArray(INTS.size)
+        val expectedB = ByteArray(INTS.first().second.size * INTS.size)
+        INTS.forEachIndexed { index, value ->
+            val bytes = value.expectedBytes()
+            expectedN[index] = value.first
+            bytes.copyInto(expectedB, bytes.size * index)
+        }
+
+        assertContentEquals(expectedB, endian.pack(source = expectedN, dest = ByteArray(expectedB.size), destOffset = 0))
+        assertContentEquals(expectedN, endian.pack(source = expectedB, dest = IntArray(expectedN.size), destOffset = 0, 0, expectedB.size))
+
+        // TODO assertFailsWith
+    }
+
+    @Test
+    fun givenEndian_whenPackLongArray_thenIsAsExpected() {
+        val expectedN = LongArray(LONGS.size)
+        val expectedB = ByteArray(LONGS.first().second.size * LONGS.size)
+        LONGS.forEachIndexed { index, value ->
+            val bytes = value.expectedBytes()
+            expectedN[index] = value.first
+            bytes.copyInto(expectedB, bytes.size * index)
+        }
+
+        assertContentEquals(expectedB, endian.pack(source = expectedN, dest = ByteArray(expectedB.size), destOffset = 0))
+        assertContentEquals(expectedN, endian.pack(source = expectedB, dest = LongArray(expectedN.size), destOffset = 0, 0, expectedB.size))
+
+        // TODO assertFailsWith
     }
 }

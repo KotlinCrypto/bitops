@@ -20,15 +20,15 @@ package org.kotlincrypto.bitops.endian.internal
 import kotlin.jvm.JvmInline
 
 @JvmInline
-internal value class B0 internal constructor(internal val b0: Byte)
-
-@JvmInline
 internal value class Lo internal constructor(internal val lo: Int)
 
 internal inline fun Lo.toLong(hi: Int): Long {
     return  ((hi.toLong() and 0xffffffff) shl 32) or
             ((lo.toLong() and 0xffffffff)       )
 }
+
+@JvmInline
+internal value class B0 internal constructor(internal val b0: Byte)
 
 internal inline fun B0.toBEShort(b1: Byte): Short {
     return  (
@@ -66,80 +66,109 @@ internal inline fun B0.toLELong(b1: Byte, b2: Byte, b3: Byte, b4: Byte, b5: Byte
     return Lo(this.toLEInt(b1, b2, b3)).toLong(hi = B0(b4).toLEInt(b5, b6, b7))
 }
 
-internal inline fun ByteArray.packBEShort(target: Short, offset: Int): ByteArray {
-    this[offset    ] = (target.toInt() ushr 8).toByte()
-    this[offset + 1] = (target               ).toByte()
+internal inline fun ByteArray.packBEShort(source: Short, offset: Int): ByteArray {
+    this[offset    ] = (source.toInt() ushr 8).toByte()
+    this[offset + 1] = (source               ).toByte()
     return this
 }
 
-internal inline fun ByteArray.packLEShort(target: Short, offset: Int): ByteArray {
-    this[offset    ] = (target               ).toByte()
-    this[offset + 1] = (target.toInt() ushr 8).toByte()
+internal inline fun ByteArray.packLEShort(source: Short, offset: Int): ByteArray {
+    this[offset    ] = (source               ).toByte()
+    this[offset + 1] = (source.toInt() ushr 8).toByte()
     return this
 }
 
-internal inline fun ByteArray.packBEInt(target: Int, offset: Int): ByteArray {
-    this[offset    ] = (target ushr 24).toByte()
-    this[offset + 1] = (target ushr 16).toByte()
-    this[offset + 2] = (target ushr  8).toByte()
-    this[offset + 3] = (target        ).toByte()
+internal inline fun ByteArray.packBEInt(source: Int, offset: Int): ByteArray {
+    this[offset    ] = (source ushr 24).toByte()
+    this[offset + 1] = (source ushr 16).toByte()
+    this[offset + 2] = (source ushr  8).toByte()
+    this[offset + 3] = (source        ).toByte()
     return this
 }
 
-internal inline fun ByteArray.packLEInt(target: Int, offset: Int): ByteArray {
-    this[offset    ] = (target        ).toByte()
-    this[offset + 1] = (target ushr  8).toByte()
-    this[offset + 2] = (target ushr 16).toByte()
-    this[offset + 3] = (target ushr 24).toByte()
+internal inline fun ByteArray.packLEInt(source: Int, offset: Int): ByteArray {
+    this[offset    ] = (source        ).toByte()
+    this[offset + 1] = (source ushr  8).toByte()
+    this[offset + 2] = (source ushr 16).toByte()
+    this[offset + 3] = (source ushr 24).toByte()
     return this
 }
 
-internal inline fun ByteArray.packBELong(target: Long, offset: Int): ByteArray {
-    this[offset    ] = (target ushr 56).toByte()
-    this[offset + 1] = (target ushr 48).toByte()
-    this[offset + 2] = (target ushr 40).toByte()
-    this[offset + 3] = (target ushr 32).toByte()
-    this[offset + 4] = (target ushr 24).toByte()
-    this[offset + 5] = (target ushr 16).toByte()
-    this[offset + 6] = (target ushr  8).toByte()
-    this[offset + 7] = (target        ).toByte()
+internal inline fun ByteArray.packBELong(source: Long, offset: Int): ByteArray {
+    this[offset    ] = (source ushr 56).toByte()
+    this[offset + 1] = (source ushr 48).toByte()
+    this[offset + 2] = (source ushr 40).toByte()
+    this[offset + 3] = (source ushr 32).toByte()
+    this[offset + 4] = (source ushr 24).toByte()
+    this[offset + 5] = (source ushr 16).toByte()
+    this[offset + 6] = (source ushr  8).toByte()
+    this[offset + 7] = (source        ).toByte()
     return this
 }
 
-internal inline fun ByteArray.packLELong(target: Long, offset: Int): ByteArray {
-    this[offset    ] = (target        ).toByte()
-    this[offset + 1] = (target ushr  8).toByte()
-    this[offset + 2] = (target ushr 16).toByte()
-    this[offset + 3] = (target ushr 24).toByte()
-    this[offset + 4] = (target ushr 32).toByte()
-    this[offset + 5] = (target ushr 40).toByte()
-    this[offset + 6] = (target ushr 48).toByte()
-    this[offset + 7] = (target ushr 56).toByte()
+internal inline fun ByteArray.packLELong(source: Long, offset: Int): ByteArray {
+    this[offset    ] = (source        ).toByte()
+    this[offset + 1] = (source ushr  8).toByte()
+    this[offset + 2] = (source ushr 16).toByte()
+    this[offset + 3] = (source ushr 24).toByte()
+    this[offset + 4] = (source ushr 32).toByte()
+    this[offset + 5] = (source ushr 40).toByte()
+    this[offset + 6] = (source ushr 48).toByte()
+    this[offset + 7] = (source ushr 56).toByte()
     return this
 }
 
-internal inline fun ByteArray.packAllElsePartial(
-    offset: Int,
-    startIndex: Int,
-    endIndex: Int,
-    sizeBytes: Int,
-    packAll: ByteArray.() -> ByteArray,
+internal inline fun ByteArray.packNumberAllElsePartial(
+    destOffset: Int,
+    sourceIndexStart: Int,
+    sourceIndexEnd: Int,
+    numberSizeBytes: Int,
+    packNumber: ByteArray.() -> ByteArray,
     ushr: (bits: Int) -> Byte,
 ): ByteArray {
     // Check endIndex first
-    return if (endIndex == sizeBytes && startIndex == 0) packAll()
-    else packPartial(offset, startIndex, endIndex, ushr)
+    return if (sourceIndexEnd == numberSizeBytes && sourceIndexStart == 0) packNumber()
+    else packNumberPartial(destOffset, sourceIndexStart, sourceIndexEnd, ushr)
 }
 
-internal inline fun ByteArray.packPartial(
-    offset: Int,
-    startIndex: Int,
-    endIndex: Int,
+internal inline fun ByteArray.packNumberPartial(
+    destOffset: Int,
+    sourceIndexStart: Int,
+    sourceIndexEnd: Int,
     ushr: (bits: Int) -> Byte,
 ): ByteArray {
-    var pos = offset
-    for (i in startIndex..<endIndex) {
+    var pos = destOffset
+    for (i in sourceIndexStart..<sourceIndexEnd) {
         this[pos++] = ushr(Byte.SIZE_BITS * i)
+    }
+    return this
+}
+
+internal inline fun ByteArray.packArray(
+    destOffset: Int,
+    sourceIndexStart: Int,
+    sourceIndexEnd: Int,
+    numberSizeBytes: Int,
+    packNumber: ByteArray.(sourcePos: Int, destPos: Int) -> ByteArray,
+): ByteArray {
+    for (i in sourceIndexStart..<sourceIndexEnd) {
+        packNumber(i, (i * numberSizeBytes) + destOffset)
+    }
+    return this
+}
+
+internal inline fun <Dest: Any> Dest.packArray(
+    destOffset: Int,
+    sourceIndexStart: Int,
+    sourceIndexEnd: Int,
+    numberSizeBytes: Int,
+    unpackNumber: (sourcePos: Int, destPos: Int) -> Unit,
+): Dest {
+    var destPos = destOffset
+    var sourcePos = sourceIndexStart
+    while (sourcePos < sourceIndexEnd) {
+        unpackNumber(sourcePos, destPos++)
+        sourcePos += numberSizeBytes
     }
     return this
 }
