@@ -19,14 +19,16 @@ package org.kotlincrypto.bitops.benchmarks
 
 import kotlinx.benchmark.*
 import org.kotlincrypto.bitops.endian.Endian
+import kotlin.random.Random
 
 abstract class EndianBenchmarkBase(private val endian: Endian) {
 
-    private val buf = ByteArray(Int.SIZE_BYTES) { (it - 100).toByte() }
+    private val bytes = Random.Default.nextBytes(Int.SIZE_BYTES * 4)
+    private val ints = IntArray(bytes.size / 4) { Random.Default.nextInt() }
 
     @Benchmark
     fun intFrom() {
-        endian.intFrom(source = buf, offset = 0)
+        endian.intFrom(source = bytes, offset = 0)
     }
 
     @Benchmark
@@ -36,22 +38,42 @@ abstract class EndianBenchmarkBase(private val endian: Endian) {
 
     @Benchmark
     fun packAll() {
-        endian.pack(-42, buf, 0)
+        endian.pack(-42, bytes, 0)
     }
 
     @Benchmark
     fun packAllUnsafe() {
-        endian.packUnsafe(-42, buf, 0)
+        endian.packUnsafe(-42, bytes, 0)
+    }
+
+    @Benchmark
+    fun packArray() {
+        endian.pack(source = bytes, dest = ints, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = bytes.size)
+    }
+
+    @Benchmark
+    fun packArrayUnsafe() {
+        endian.packUnsafe(source = bytes, dest = ints, destOffset = 0, sourceIndexStart = 0, sourceIndexEnd = bytes.size)
     }
 
     @Benchmark
     fun packPartial() {
-        endian.pack(-42, buf, 0, startIndex = 1)
+        endian.pack(-42, bytes, 0, sourceIndexStart = 1)
     }
 
     @Benchmark
     fun packPartialUnsafe() {
-        endian.packUnsafe(-42, buf, 0, startIndex = 1)
+        endian.packUnsafe(-42, bytes, 0, sourceIndexStart = 1)
+    }
+
+    @Benchmark
+    fun unpackArray() {
+        endian.pack(source = ints, dest = bytes, destOffset = 0)
+    }
+
+    @Benchmark
+    fun unpackArrayUnsafe() {
+        endian.packUnsafe(source = ints, dest = bytes, destOffset = 0)
     }
 }
 
