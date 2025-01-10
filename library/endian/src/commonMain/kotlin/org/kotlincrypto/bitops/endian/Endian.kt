@@ -1907,31 +1907,17 @@ public sealed class Endian private constructor() {
         public override fun shortFrom(
             source: ByteArray,
             offset: Int,
-        ): Short = B0(source[offset]).toBEShort(
-            source[offset + 1],
-        )
+        ): Short = source.unpackBEShort(offset)
 
         public override fun intFrom(
             source: ByteArray,
             offset: Int,
-        ): Int = B0(source[offset]).toBEInt(
-            source[offset + 1],
-            source[offset + 2],
-            source[offset + 3],
-        )
+        ): Int = source.unpackBEInt(offset)
 
         public override fun longFrom(
             source: ByteArray,
             offset: Int
-        ): Long = B0(source[offset]).toBELong(
-            source[offset + 1],
-            source[offset + 2],
-            source[offset + 3],
-            source[offset + 4],
-            source[offset + 5],
-            source[offset + 6],
-            source[offset + 7],
-        )
+        ): Long = source.unpackBELong(offset)
 
         public override fun packUnsafe(
             source: Short,
@@ -1965,7 +1951,7 @@ public sealed class Endian private constructor() {
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Short.SIZE_BYTES,
-            packNumber = { sourcePos, destPos -> packBEShort(source[sourcePos], destPos) }
+            packNumber = { sourcePos, destPos -> packBEShort(source[sourcePos], destPos) },
         )
 
         public override fun packUnsafe(
@@ -1975,15 +1961,12 @@ public sealed class Endian private constructor() {
             sourceIndexStart: Int,
             sourceIndexEnd: Int,
         ): ShortArray = dest.packArray(
+            source = source,
             destOffset = destOffset,
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Short.SIZE_BYTES,
-            unpackNumber = { sourcePos, destPos ->
-                dest[destPos] = B0(source[sourcePos]).toBEShort(
-                    source[sourcePos + 1],
-                )
-            },
+            unpackNumber = { sourcePos, destPos -> dest[destPos] = unpackBEShort(sourcePos) },
         )
 
         public override fun packUnsafe(
@@ -2018,7 +2001,7 @@ public sealed class Endian private constructor() {
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Int.SIZE_BYTES,
-            packNumber = { sourcePos, destPos -> packBEInt(source[sourcePos], destPos) }
+            packNumber = { sourcePos, destPos -> packBEInt(source[sourcePos], destPos) },
         )
 
         public override fun packUnsafe(
@@ -2028,17 +2011,12 @@ public sealed class Endian private constructor() {
             sourceIndexStart: Int,
             sourceIndexEnd: Int,
         ): IntArray = dest.packArray(
+            source = source,
             destOffset = destOffset,
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Int.SIZE_BYTES,
-            unpackNumber = { sourcePos, destPos ->
-                dest[destPos] = B0(source[sourcePos]).toBEInt(
-                    source[sourcePos + 1],
-                    source[sourcePos + 2],
-                    source[sourcePos + 3],
-                )
-            },
+            unpackNumber = { sourcePos, destPos -> dest[destPos] = unpackBEInt(sourcePos) },
         )
 
         public override fun packUnsafe(
@@ -2073,7 +2051,7 @@ public sealed class Endian private constructor() {
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Long.SIZE_BYTES,
-            packNumber = { sourcePos, destPos -> packBELong(source[sourcePos], destPos) }
+            packNumber = { sourcePos, destPos -> packBELong(source[sourcePos], destPos) },
         )
 
         public override fun packUnsafe(
@@ -2083,21 +2061,12 @@ public sealed class Endian private constructor() {
             sourceIndexStart: Int,
             sourceIndexEnd: Int,
         ): LongArray = dest.packArray(
+            source = source,
             destOffset = destOffset,
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Long.SIZE_BYTES,
-            unpackNumber = { sourcePos, destPos ->
-                dest[destPos] = B0(source[sourcePos]).toBELong(
-                    source[sourcePos + 1],
-                    source[sourcePos + 2],
-                    source[sourcePos + 3],
-                    source[sourcePos + 4],
-                    source[sourcePos + 5],
-                    source[sourcePos + 6],
-                    source[sourcePos + 7],
-                )
-            },
+            unpackNumber = { sourcePos, destPos -> dest[destPos] = source.unpackBELong(sourcePos) },
         )
     }
 
@@ -2357,31 +2326,17 @@ public sealed class Endian private constructor() {
         public override fun shortFrom(
             source: ByteArray,
             offset: Int,
-        ): Short = B0(source[offset]).toLEShort(
-            source[offset + 1],
-        )
+        ): Short = source.unpackLEShort(offset)
 
         public override fun intFrom(
             source: ByteArray,
             offset: Int,
-        ): Int = B0(source[offset]).toLEInt(
-            source[offset + 1],
-            source[offset + 2],
-            source[offset + 3],
-        )
+        ): Int = source.unpackLEInt(offset)
 
         public override fun longFrom(
             source: ByteArray,
             offset: Int
-        ): Long = B0(source[offset]).toLELong(
-            source[offset + 1],
-            source[offset + 2],
-            source[offset + 3],
-            source[offset + 4],
-            source[offset + 5],
-            source[offset + 6],
-            source[offset + 7],
-        )
+        ): Long = source.unpackLELong(offset)
 
         public override fun packUnsafe(
             source: Short,
@@ -2415,7 +2370,7 @@ public sealed class Endian private constructor() {
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Short.SIZE_BYTES,
-            packNumber = { sourcePos, destPos -> packLEShort(source[sourcePos], destPos) }
+            packNumber = { sourcePos, destPos -> packLEShort(source[sourcePos], destPos) },
         )
 
         public override fun packUnsafe(
@@ -2425,15 +2380,12 @@ public sealed class Endian private constructor() {
             sourceIndexStart: Int,
             sourceIndexEnd: Int,
         ): ShortArray = dest.packArray(
+            source = source,
             destOffset = destOffset,
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Short.SIZE_BYTES,
-            unpackNumber = { sourcePos, destPos ->
-                dest[destPos] = B0(source[sourcePos]).toLEShort(
-                    source[sourcePos + 1],
-                )
-            },
+            unpackNumber = { sourcePos, destPos -> dest[destPos] = source.unpackLEShort(sourcePos) },
         )
 
         public override fun packUnsafe(
@@ -2468,7 +2420,7 @@ public sealed class Endian private constructor() {
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Int.SIZE_BYTES,
-            packNumber = { sourcePos, destPos -> packLEInt(source[sourcePos], destPos) }
+            packNumber = { sourcePos, destPos -> packLEInt(source[sourcePos], destPos) },
         )
 
         public override fun packUnsafe(
@@ -2478,17 +2430,12 @@ public sealed class Endian private constructor() {
             sourceIndexStart: Int,
             sourceIndexEnd: Int,
         ): IntArray = dest.packArray(
+            source = source,
             destOffset = destOffset,
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Int.SIZE_BYTES,
-            unpackNumber = { sourcePos, destPos ->
-                dest[destPos] = B0(source[sourcePos]).toLEInt(
-                    source[sourcePos + 1],
-                    source[sourcePos + 2],
-                    source[sourcePos + 3],
-                )
-            },
+            unpackNumber = { sourcePos, destPos -> dest[destPos] = source.unpackLEInt(sourcePos) },
         )
 
         public override fun packUnsafe(
@@ -2523,7 +2470,7 @@ public sealed class Endian private constructor() {
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Long.SIZE_BYTES,
-            packNumber = { sourcePos, destPos -> packLELong(source[sourcePos], destPos) }
+            packNumber = { sourcePos, destPos -> packLELong(source[sourcePos], destPos) },
         )
 
         public override fun packUnsafe(
@@ -2533,21 +2480,12 @@ public sealed class Endian private constructor() {
             sourceIndexStart: Int,
             sourceIndexEnd: Int,
         ): LongArray = dest.packArray(
+            source = source,
             destOffset = destOffset,
             sourceIndexStart = sourceIndexStart,
             sourceIndexEnd = sourceIndexEnd,
             numberSizeBytes = Long.SIZE_BYTES,
-            unpackNumber = { sourcePos, destPos ->
-                dest[destPos] = B0(source[sourcePos]).toLELong(
-                    source[sourcePos + 1],
-                    source[sourcePos + 2],
-                    source[sourcePos + 3],
-                    source[sourcePos + 4],
-                    source[sourcePos + 5],
-                    source[sourcePos + 6],
-                    source[sourcePos + 7],
-                )
-            },
+            unpackNumber = { sourcePos, destPos -> dest[destPos] = source.unpackLELong(sourcePos) },
         )
     }
 

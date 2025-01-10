@@ -118,6 +118,46 @@ internal inline fun ByteArray.packLELong(source: Long, offset: Int): ByteArray {
     return this
 }
 
+internal inline fun ByteArray.unpackBEShort(offset: Int): Short = B0(this[offset]).toBEShort(
+    this[offset + 1],
+)
+
+internal inline fun ByteArray.unpackLEShort(offset: Int): Short = B0(this[offset]).toLEShort(
+    this[offset + 1],
+)
+
+internal inline fun ByteArray.unpackBEInt(offset: Int): Int = B0(this[offset]).toBEInt(
+    this[offset + 1],
+    this[offset + 2],
+    this[offset + 3],
+)
+
+internal inline fun ByteArray.unpackLEInt(offset: Int): Int = B0(this[offset]).toLEInt(
+    this[offset + 1],
+    this[offset + 2],
+    this[offset + 3],
+)
+
+internal inline fun ByteArray.unpackBELong(offset: Int): Long = B0(this[offset]).toBELong(
+    this[offset + 1],
+    this[offset + 2],
+    this[offset + 3],
+    this[offset + 4],
+    this[offset + 5],
+    this[offset + 6],
+    this[offset + 7],
+)
+
+internal inline fun ByteArray.unpackLELong(offset: Int): Long = B0(this[offset]).toLELong(
+    this[offset + 1],
+    this[offset + 2],
+    this[offset + 3],
+    this[offset + 4],
+    this[offset + 5],
+    this[offset + 6],
+    this[offset + 7],
+)
+
 internal inline fun ByteArray.packNumberAllElsePartial(
     destOffset: Int,
     sourceIndexStart: Int,
@@ -158,16 +198,17 @@ internal inline fun ByteArray.packArray(
 }
 
 internal inline fun <Dest: Any> Dest.packArray(
+    source: ByteArray,
     destOffset: Int,
     sourceIndexStart: Int,
     sourceIndexEnd: Int,
     numberSizeBytes: Int,
-    unpackNumber: (sourcePos: Int, destPos: Int) -> Unit,
+    unpackNumber: ByteArray.(sourcePos: Int, destPos: Int) -> Unit,
 ): Dest {
     var destPos = destOffset
     var sourcePos = sourceIndexStart
     while (sourcePos < sourceIndexEnd) {
-        unpackNumber(sourcePos, destPos++)
+        unpackNumber(source, sourcePos, destPos++)
         sourcePos += numberSizeBytes
     }
     return this
