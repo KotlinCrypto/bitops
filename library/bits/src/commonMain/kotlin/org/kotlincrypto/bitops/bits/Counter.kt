@@ -93,12 +93,14 @@ public sealed class Counter private constructor() {
          *  - [incrementBy] is less than or equal to 0
          *  - [incrementBy] is greater than [MAX_INCREMENT]
          *  - [incrementBy] is not a factor of 8
+         *  - [incrementBy] does not go into [Int.MIN_VALUE] (i.e. when `Int.MIN_VALUE % incrementBy != 0`)
          *  - [lo] is not a factor of [incrementBy]
          * */
         public constructor(lo: Int, hi: Int, incrementBy: Int): super() {
             require(incrementBy > 0) { "incrementBy[$incrementBy] must be greater than 0" }
             require(incrementBy <= MAX_INCREMENT) { "incrementBy[$incrementBy] must be less than or equal to $MAX_INCREMENT" }
             require(incrementBy % 8 == 0) { "incrementBy[$incrementBy] must be a factor of 8" }
+            require(Int.MIN_VALUE % incrementBy == 0) { "Int.MIN_VALUE % incrementBy[$incrementBy] != 0" }
             require(lo % incrementBy == 0) { "lo must be a factor of incrementBy[$incrementBy]" }
 
             this.incrementBy = incrementBy
@@ -113,6 +115,7 @@ public sealed class Counter private constructor() {
          *  - Less than or equal to 0
          *  - Greater than [MAX_INCREMENT]
          *  - Not a factor of 8
+         *  - Does not go into [Int.MIN_VALUE] (i.e. when `Int.MIN_VALUE % incrementBy != 0`)
          * */
         public constructor(incrementBy: Int): this(0, 0, incrementBy)
 
@@ -210,12 +213,14 @@ public sealed class Counter private constructor() {
          *  - [incrementBy] is less than or equal to 0
          *  - [incrementBy] is greater than [MAX_INCREMENT]
          *  - [incrementBy] is not a factor of 8
+         *  - [incrementBy] does not go into [Long.MIN_VALUE] (i.e. when `Long.MIN_VALUE % incrementBy != 0`)
          *  - [lo] is not a factor of [incrementBy]
          * */
         public constructor(lo: Long, hi: Long, incrementBy: Long): super() {
             require(incrementBy > 0L) { "incrementBy[$incrementBy] must be greater than 0" }
             require(incrementBy <= MAX_INCREMENT) { "incrementBy[$incrementBy] must be less than or equal to $MAX_INCREMENT" }
             require(incrementBy % 8 == 0L) { "incrementBy[$incrementBy] must be a factor of 8" }
+            require(Long.MIN_VALUE % incrementBy == 0L) { "Long.MIN_VALUE % incrementBy[$incrementBy] != 0" }
             require(lo % incrementBy == 0L) { "lo must be a factor of incrementBy[$incrementBy]" }
 
             this.incrementBy = incrementBy
@@ -230,6 +235,7 @@ public sealed class Counter private constructor() {
          *  - Less than or equal to 0
          *  - Greater than [MAX_INCREMENT]
          *  - Not a factor of 8
+         *  - Does not go into [Long.MIN_VALUE] (i.e. when `Long.MIN_VALUE % incrementBy != 0`)
          * */
         public constructor(incrementBy: Long): this(0, 0, incrementBy)
 
