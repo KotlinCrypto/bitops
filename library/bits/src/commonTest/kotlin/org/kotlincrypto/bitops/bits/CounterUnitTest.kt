@@ -63,6 +63,13 @@ class CounterUnitTest {
     }
 
     @Test
+    fun givenIncrementBy_whenIsMaxIncrement_thenDoesNotThrowException() {
+        // {Int/Long}.MAX_VALUE % incrementBy == 0
+        Counter.Bit32(Counter.Bit32.MAX_INCREMENT)
+        Counter.Bit64(Counter.Bit64.MAX_INCREMENT)
+    }
+
+    @Test
     fun givenLo_whenNotFactoryIncrementBy_thenThrowsException() {
         // Would throw if 32 was not a factor of 8...
         Counter.Bit32(32)
