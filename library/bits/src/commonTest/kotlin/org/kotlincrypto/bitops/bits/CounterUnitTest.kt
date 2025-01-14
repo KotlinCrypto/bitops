@@ -53,16 +53,26 @@ class CounterUnitTest {
     }
 
     @Test
-    fun givenLo_whenNotFactoryIncrementBy_thenThrowsException() {
-        // Would throw if 24 was not a factor of 8...
-        Counter.Bit32(24)
-        Counter.Bit64(24)
-
+    fun givenIncrementBy_whenNumberMinNotDivisibleByIt_thenThrowsException() {
         assertFailsWith<IllegalArgumentException> {
-            Counter.Bit32(8, 0, 24)
+            Counter.Bit32(0, 0, 24)
         }
         assertFailsWith<IllegalArgumentException> {
-            Counter.Bit64(16, 0, 24)
+            Counter.Bit64(0, 0, 24)
+        }
+    }
+
+    @Test
+    fun givenLo_whenNotFactoryIncrementBy_thenThrowsException() {
+        // Would throw if 32 was not a factor of 8...
+        Counter.Bit32(32)
+        Counter.Bit64(32)
+
+        assertFailsWith<IllegalArgumentException> {
+            Counter.Bit32(8, 0, 32)
+        }
+        assertFailsWith<IllegalArgumentException> {
+            Counter.Bit64(16, 0, 32)
         }
     }
 
