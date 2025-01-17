@@ -17,6 +17,7 @@ package org.kotlincrypto.bitops.bits
 
 import org.kotlincrypto.bitops.endian.Endian.Big.beLongAt
 import java.math.BigInteger
+import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -75,5 +76,38 @@ class CounterJvmUnitTest {
 
         assertEquals(expectedLo, bits.lo)
         assertEquals(expectedHi, bits.hi)
+    }
+
+    @Test
+    fun givenBit64Final_whenAsBitsFromRandomLargeNumber_thenConvertsAsExpected() {
+        repeat(500) {
+            val number = BigInteger("2").pow(88).minus(
+                BigInteger(
+                    Random.Default.nextLong(Long.MAX_VALUE - 500_000_000, Long.MAX_VALUE).toString()
+                )
+            )
+            val nBits = number.times(BigInteger("8"))
+
+            val bNumber = number.toByteArray().to16Bytes()
+            val bNBits = nBits.toByteArray().to16Bytes()
+
+            val bits = Counter.Bit64.Final(
+                lo = bNumber.beLongAt(8),
+                hi = bNumber.beLongAt(0),
+            ).asBits()
+
+            val expectedLo = bNBits.beLongAt(8)
+            val expectedHi = bNBits.beLongAt(0)
+
+            assertEquals(expectedLo, bits.lo)
+            assertEquals(expectedHi, bits.hi)
+        }
+    }
+
+    private fun ByteArray.to16Bytes(): ByteArray {
+        require(this.size <= 16) { "array.size is greater than 16 bytes..." }
+        val b = ByteArray(16)
+        copyInto(b, destinationOffset = 16 - size)
+        return b
     }
 }
