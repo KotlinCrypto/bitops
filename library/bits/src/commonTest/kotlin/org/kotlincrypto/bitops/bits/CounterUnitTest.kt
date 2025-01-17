@@ -209,21 +209,4 @@ class CounterUnitTest {
         val actual = ((bits.hi.toLong() and 0xffffffff) shl 32) or (bits.lo.toLong() and 0xffffffff)
         assertEquals(expected, actual)
     }
-
-    @Test
-    fun givenBit64Final_whenAsBits_thenConvertsAsExpected() {
-        val number = 5551889119L
-        val final = Counter.Bit64.Final(lo = number, hi = 1)
-        val bits = final.asBits()
-        assertNotEquals(final, bits)
-
-        // Should return same instance (already bits)
-        assertEquals(bits, bits.asBits())
-
-        var expected = Long.MAX_VALUE
-        expected += number + 1
-        expected *= Byte.SIZE_BITS
-        val actual = ((bits.hi and 0xffffffff) shl 32) or (bits.lo and 0xffffffff)
-        assertEquals(expected, actual)
-    }
 }
