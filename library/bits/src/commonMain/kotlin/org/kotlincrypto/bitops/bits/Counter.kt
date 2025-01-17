@@ -278,7 +278,7 @@ public sealed class Counter private constructor() {
 
             public override fun asBits(): Final {
                 if (isBits) return this
-                return Final(lo shl 3, (hi shl 3) or (lo ushr 29), isBits = true)
+                return Final(lo shl 3, (hi shl 3) or (lo ushr 61), isBits = true)
             }
         }
 
