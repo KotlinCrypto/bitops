@@ -39,14 +39,14 @@ The best way to keep `KotlinCrypto` dependencies up to date is by using the
 ```kotlin
 // build.gradle.kts
 dependencies {
-    val vBitOps = "0.1.1"
+    val vBitOps = "0.1.2"
     implementation("org.kotlincrypto.bitops:bits:$vBitOps")
     implementation("org.kotlincrypto.bitops:endian:$vBitOps")
 }
 ```
 
 <!-- TAG_VERSION -->
-[badge-latest-release]: https://img.shields.io/badge/latest--release-0.1.1-blue.svg?style=flat
+[badge-latest-release]: https://img.shields.io/badge/latest--release-0.1.2-blue.svg?style=flat
 [badge-license]: https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat
 
 <!-- TAG_DEPENDENCIES -->
