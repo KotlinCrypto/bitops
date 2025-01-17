@@ -18,5 +18,13 @@ plugins {
 }
 
 kmpConfiguration {
-    configureShared(java9ModuleName = "org.kotlincrypto.bitops.bits", publish = true) {}
+    configureShared(java9ModuleName = "org.kotlincrypto.bitops.bits", publish = true) {
+        jvm {
+            sourceSetTest {
+                dependencies {
+                    implementation(project(":library:endian"))
+                }
+            }
+        }
+    }
 }
