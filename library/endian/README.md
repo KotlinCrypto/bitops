@@ -6,26 +6,26 @@ are pervasive such that the `Endian.Big` & `Endian.Little` implementations are a
 ```kotlin
 val b = ByteArray(Long.SIZE_BYTES) { -10 }
 
-arrayOf(Endian.Big, Endian.Little).forEach { endian ->
-    println(endian)
+arrayOf(Endian.Big, Endian.Little).forEach { endianness ->
+    println(endianness)
 
     // Short
-    endian.pack(source = 3883.toShort(), dest = b, destOffset = 0)
+    endianness.pack(source = 3883.toShort(), dest = b, destOffset = 0)
     println(b.toList())
-    println(endian.shortFrom(source = b, offset = 0))
-    // Alternatively: endian.shortOf(b[0], b[1])
+    println(endianness.shortFrom(source = b, offset = 0))
+    // Alternatively: endianness.shortOf(b[0], b[1])
 
     // Int
-    endian.pack(source = 3883541, dest = b, destOffset = 0)
+    endianness.pack(source = 3883541, dest = b, destOffset = 0)
     println(b.toList())
-    println(endian.intFrom(source = b, offset = 0))
-    // Alternatively: endian.intOf(b[0], b[1], b[2], b[3])
+    println(endianness.intFrom(source = b, offset = 0))
+    // Alternatively: endianness.intOf(b[0], b[1], b[2], b[3])
 
     // Long
-    endian.pack(source = 1948571948571333L, dest = b, destOffset = 0)
+    endianness.pack(source = 1948571948571333L, dest = b, destOffset = 0)
     println(b.toList())
-    println(endian.longFrom(source = b, offset = 0))
-    // Alternatively: endian.longOf(b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7])
+    println(endianness.longFrom(source = b, offset = 0))
+    // Alternatively: endianness.longOf(b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7])
     b.fill(-10)
     println("")
 }
