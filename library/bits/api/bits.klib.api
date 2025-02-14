@@ -84,8 +84,6 @@ sealed class org.kotlincrypto.bitops.bits/Counter { // org.kotlincrypto.bitops.b
     }
 
     sealed class Final { // org.kotlincrypto.bitops.bits/Counter.Final|null[0]
-        constructor <init>(kotlin/Boolean) // org.kotlincrypto.bitops.bits/Counter.Final.<init>|<init>(kotlin.Boolean){}[0]
-
         final val isBits // org.kotlincrypto.bitops.bits/Counter.Final.isBits|{}isBits[0]
             final fun <get-isBits>(): kotlin/Boolean // org.kotlincrypto.bitops.bits/Counter.Final.isBits.<get-isBits>|<get-isBits>(){}[0]
 
