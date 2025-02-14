@@ -13,29 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-import org.jetbrains.dokka.DokkaConfiguration.Visibility
-import org.jetbrains.dokka.gradle.DokkaTaskPartial
+import org.jetbrains.dokka.gradle.DokkaExtension
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import java.net.URI
 
 plugins {
     id("org.jetbrains.dokka")
 }
 
-tasks.withType<DokkaTaskPartial>().configureEach {
-    suppressInheritedMembers = true
+rootProject.dependencies { dokka(project(project.path)) }
+
+extensions.configure<DokkaExtension> {
+    dokkaPublications.configureEach {
+        suppressInheritedMembers.set(true)
+    }
 
     dokkaSourceSets.configureEach {
         includes.from("README.md")
-        noStdlibLink = true
+        enableKotlinStdLibDocumentationLink.set(false)
 
         sourceLink {
-            localDirectory = rootDir
-            remoteUrl = URI("https://github.com/KotlinCrypto/bitops/tree/master").toURL()
-            remoteLineSuffix = "#L"
+            localDirectory.set(rootDir)
+            remoteUrl.set(URI("https://github.com/KotlinCrypto/bitops/tree/master"))
+            remoteLineSuffix.set("#L")
         }
 
-        documentedVisibilities.set(setOf(
-            Visibility.PUBLIC,
-        ))
+        documentedVisibilities(
+            VisibilityModifier.Public,
+        )
     }
 }

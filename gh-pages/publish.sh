@@ -15,20 +15,21 @@
 set -e
 
 readonly DIR_SCRIPT="$( cd "$( dirname "$0" )" >/dev/null && pwd )"
+readonly REPO_NAME="bitops"
 
-trap 'rm -rf "$DIR_SCRIPT/bitops"' EXIT
+trap 'rm -rf "$DIR_SCRIPT/$REPO_NAME"' EXIT
 
 cd "$DIR_SCRIPT"
-git clone -b gh-pages --single-branch https://github.com/KotlinCrypto/bitops.git
-rm -rf "$DIR_SCRIPT/bitops/"*
-echo "bitops.kotlincrypto.org" > "$DIR_SCRIPT/bitops/CNAME"
+git clone -b gh-pages --single-branch https://github.com/KotlinCrypto/$REPO_NAME.git
+rm -rf "$DIR_SCRIPT/$REPO_NAME/"*
+echo "$REPO_NAME.kotlincrypto.org" > "$DIR_SCRIPT/$REPO_NAME/CNAME"
 
 cd ..
 ./gradlew clean -DKMP_TARGETS_ALL
-./gradlew dokkaHtmlMultiModule --no-build-cache -DKMP_TARGETS_ALL
-cp -aR build/dokka/htmlMultiModule/* gh-pages/bitops
+./gradlew dokkaGenerate --no-build-cache -DKMP_TARGETS_ALL
+cp -aR build/dokka/html/* gh-pages/$REPO_NAME
 
-cd "$DIR_SCRIPT/bitops"
+cd "$DIR_SCRIPT/$REPO_NAME"
 sed -i "s|module:|module:library/|g" "package-list"
 
 git add --all
