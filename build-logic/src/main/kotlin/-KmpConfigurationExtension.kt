@@ -21,7 +21,7 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 fun KmpConfigurationExtension.configureShared(
     java9ModuleName: String? = null,
     publish: Boolean = false,
-    action: Action<KmpConfigurationContainerDsl>
+    action: Action<KmpConfigurationContainerDsl>,
 ) {
     if (publish) {
         require(!java9ModuleName.isNullOrBlank()) { "publications must specify a module-info name" }
