@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-@file:Suppress("KotlinRedundantDiagnosticSuppress", "NOTHING_TO_INLINE", "RemoveRedundantQualifierName")
+@file:Suppress("NOTHING_TO_INLINE", "RemoveRedundantQualifierName", "RedundantVisibilityModifier")
 
 package org.kotlincrypto.bitops.endian
 
@@ -1657,34 +1657,34 @@ public sealed class Endian private constructor() {
      *
      * @see [Little]
      * */
-    public data object Big: Endian() {
+    public object Big: Endian() {
 
-        /** Syntactic Sugar. See [Endian.Big.shortFrom] */
+        /** Syntactic Sugar. See [Big.shortFrom] */
         @JvmStatic
         public inline fun ByteArray.beShortAt(
             offset: Int,
         ): Short = Big.shortFrom(this, offset)
 
-        /** Syntactic Sugar. See [Endian.Big.intFrom] */
+        /** Syntactic Sugar. See [Big.intFrom] */
         @JvmStatic
         public inline fun ByteArray.beIntAt(
             offset: Int,
         ): Int = Big.intFrom(this, offset)
 
-        /** Syntactic Sugar. See [Endian.Big.longFrom] */
+        /** Syntactic Sugar. See [Big.longFrom] */
         @JvmStatic
         public inline fun ByteArray.beLongAt(
             offset: Int,
         ): Long = Big.longFrom(this, offset)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun Short.bePackInto(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Big.pack(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun Short.bePackInto(
             dest: ByteArray,
@@ -1693,7 +1693,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Short.SIZE_BYTES,
         ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun ShortArray.bePackInto(
             dest: ByteArray,
@@ -1702,7 +1702,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun ByteArray.bePackInto(
             dest: ShortArray,
@@ -1711,14 +1711,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): ShortArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun Int.bePackInto(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Big.pack(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun Int.bePackInto(
             dest: ByteArray,
@@ -1727,7 +1727,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Int.SIZE_BYTES,
         ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun IntArray.bePackInto(
             dest: ByteArray,
@@ -1736,7 +1736,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun ByteArray.bePackInto(
             dest: IntArray,
@@ -1745,14 +1745,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): IntArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun Long.bePackInto(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Big.pack(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun Long.bePackInto(
             dest: ByteArray,
@@ -1761,7 +1761,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Long.SIZE_BYTES,
         ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun LongArray.bePackInto(
             dest: ByteArray,
@@ -1770,7 +1770,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.pack] */
+        /** Syntactic Sugar. See [Big.pack] */
         @JvmStatic
         public inline fun ByteArray.bePackInto(
             dest: LongArray,
@@ -1779,14 +1779,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): LongArray = Big.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun Short.bePackIntoUnsafe(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun Short.bePackIntoUnsafe(
             dest: ByteArray,
@@ -1795,7 +1795,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Short.SIZE_BYTES,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun ShortArray.bePackIntoUnsafe(
             dest: ByteArray,
@@ -1804,7 +1804,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun ByteArray.bePackIntoUnsafe(
             dest: ShortArray,
@@ -1813,14 +1813,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): ShortArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun Int.bePackIntoUnsafe(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun Int.bePackIntoUnsafe(
             dest: ByteArray,
@@ -1829,7 +1829,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Int.SIZE_BYTES,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun IntArray.bePackIntoUnsafe(
             dest: ByteArray,
@@ -1838,7 +1838,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun ByteArray.bePackIntoUnsafe(
             dest: IntArray,
@@ -1847,14 +1847,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): IntArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun Long.bePackIntoUnsafe(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun Long.bePackIntoUnsafe(
             dest: ByteArray,
@@ -1863,7 +1863,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Long.SIZE_BYTES,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun LongArray.bePackIntoUnsafe(
             dest: ByteArray,
@@ -1872,7 +1872,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Big.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Big.packUnsafe] */
+        /** Syntactic Sugar. See [Big.packUnsafe] */
         @JvmStatic
         public inline fun ByteArray.bePackIntoUnsafe(
             dest: LongArray,
@@ -2068,6 +2068,11 @@ public sealed class Endian private constructor() {
             numberSizeBytes = Long.SIZE_BYTES,
             unpackNumber = { sourcePos, destPos -> dest[destPos] = source.unpackBELong(sourcePos) },
         )
+
+        /** @suppress */
+        public override fun equals(other: Any?): Boolean = other is Big
+        /** @suppress */
+        public override fun hashCode(): Int = 17 * 31 + Big::class.hashCode()
     }
 
     /**
@@ -2076,34 +2081,34 @@ public sealed class Endian private constructor() {
      *
      * @see [Big]
      * */
-    public data object Little: Endian() {
+    public object Little: Endian() {
 
-        /** Syntactic Sugar. See [Endian.Little.shortFrom] */
+        /** Syntactic Sugar. See [Little.shortFrom] */
         @JvmStatic
         public inline fun ByteArray.leShortAt(
             offset: Int,
         ): Short = Little.shortFrom(this, offset)
 
-        /** Syntactic Sugar. See [Endian.Little.intFrom] */
+        /** Syntactic Sugar. See [Little.intFrom] */
         @JvmStatic
         public inline fun ByteArray.leIntAt(
             offset: Int,
         ): Int = Little.intFrom(this, offset)
 
-        /** Syntactic Sugar. See [Endian.Little.longFrom] */
+        /** Syntactic Sugar. See [Little.longFrom] */
         @JvmStatic
         public inline fun ByteArray.leLongAt(
             offset: Int,
         ): Long = Little.longFrom(this, offset)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun Short.lePackInto(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Little.pack(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun Short.lePackInto(
             dest: ByteArray,
@@ -2112,7 +2117,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Short.SIZE_BYTES,
         ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun ShortArray.lePackInto(
             dest: ByteArray,
@@ -2121,7 +2126,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun ByteArray.lePackInto(
             dest: ShortArray,
@@ -2130,14 +2135,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): ShortArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun Int.lePackInto(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Little.pack(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun Int.lePackInto(
             dest: ByteArray,
@@ -2146,7 +2151,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Int.SIZE_BYTES,
         ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun IntArray.lePackInto(
             dest: ByteArray,
@@ -2155,7 +2160,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun ByteArray.lePackInto(
             dest: IntArray,
@@ -2164,14 +2169,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): IntArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun Long.lePackInto(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Little.pack(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun Long.lePackInto(
             dest: ByteArray,
@@ -2180,7 +2185,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Long.SIZE_BYTES,
         ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun LongArray.lePackInto(
             dest: ByteArray,
@@ -2189,7 +2194,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.pack] */
+        /** Syntactic Sugar. See [Little.pack] */
         @JvmStatic
         public inline fun ByteArray.lePackInto(
             dest: LongArray,
@@ -2198,14 +2203,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): LongArray = Little.pack(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun Short.lePackIntoUnsafe(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun Short.lePackIntoUnsafe(
             dest: ByteArray,
@@ -2214,7 +2219,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Short.SIZE_BYTES,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun ShortArray.lePackIntoUnsafe(
             dest: ByteArray,
@@ -2223,7 +2228,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun ByteArray.lePackIntoUnsafe(
             dest: ShortArray,
@@ -2232,14 +2237,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): ShortArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun Int.lePackIntoUnsafe(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun Int.lePackIntoUnsafe(
             dest: ByteArray,
@@ -2248,7 +2253,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Int.SIZE_BYTES,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun IntArray.lePackIntoUnsafe(
             dest: ByteArray,
@@ -2257,7 +2262,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun ByteArray.lePackIntoUnsafe(
             dest: IntArray,
@@ -2266,14 +2271,14 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int,
         ): IntArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun Long.lePackIntoUnsafe(
             dest: ByteArray,
             destOffset: Int,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun Long.lePackIntoUnsafe(
             dest: ByteArray,
@@ -2282,7 +2287,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = Long.SIZE_BYTES,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun LongArray.lePackIntoUnsafe(
             dest: ByteArray,
@@ -2291,7 +2296,7 @@ public sealed class Endian private constructor() {
             sourceIndexEnd: Int = this.size,
         ): ByteArray = Little.packUnsafe(this, dest, destOffset, sourceIndexStart, sourceIndexEnd)
 
-        /** Syntactic Sugar. See [Endian.Little.packUnsafe] */
+        /** Syntactic Sugar. See [Little.packUnsafe] */
         @JvmStatic
         public inline fun ByteArray.lePackIntoUnsafe(
             dest: LongArray,
@@ -2487,6 +2492,11 @@ public sealed class Endian private constructor() {
             numberSizeBytes = Long.SIZE_BYTES,
             unpackNumber = { sourcePos, destPos -> dest[destPos] = source.unpackLELong(sourcePos) },
         )
+
+        /** @suppress */
+        public override fun equals(other: Any?): Boolean = other is Little
+        /** @suppress */
+        public override fun hashCode(): Int = 17 * 31 + Little::class.hashCode()
     }
 
     /** @suppress */
