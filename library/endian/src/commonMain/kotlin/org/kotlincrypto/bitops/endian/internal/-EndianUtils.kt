@@ -178,7 +178,7 @@ internal inline fun ByteArray.packNumberPartial(
     ushr: (bits: Int) -> Byte,
 ): ByteArray {
     var destPos = destOffset
-    for (i in sourceIndexStart..<sourceIndexEnd) {
+    for (i in sourceIndexStart until sourceIndexEnd) {
         this[destPos++] = ushr(Byte.SIZE_BITS * i)
     }
     return this
