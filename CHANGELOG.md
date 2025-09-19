@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## Version 0.2.0 (2025-08-25)
+## Version 0.3.0 (2025-09-19)
+ - Updates `kotlin` to `2.2.20` [[#18]][18]
+ - Lower supported `KotlinVersion` to `1.8` [[#19]][19]
+
+## Version 0.2.1 (2025-08-25)
  - Updates `kotlin` to `2.2.10` [[#17]][17]
 
 ## Version 0.2.0 (2025-02-25)
@@ -19,3 +23,5 @@
 [12]: https://github.com/KotlinCrypto/bitops/pull/12
 [14]: https://github.com/KotlinCrypto/bitops/pull/14
 [17]: https://github.com/KotlinCrypto/bitops/pull/17
+[18]: https://github.com/KotlinCrypto/bitops/pull/18
+[19]: https://github.com/KotlinCrypto/bitops/pull/19
